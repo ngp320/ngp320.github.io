@@ -1,0 +1,392 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://tanghao.fun/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://tanghao.fun">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://tanghao.fun">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+
+<link rel="prerender" href="http://tanghao.fun">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://tanghao.fun">
+<meta name="author" content="97年的顽石">
+
+<link rel="stylesheet" href="/css/JSimple.css">
+<link rel="stylesheet" href="/css/gitalk_without_markdown_style.css">
+
+<link rel="shortcut icon" href="/images/husky.png">
+
+
+<title>java(高级编程)日期操作类 - 石灰粉</title>
+
+<meta name="keywords" content>
+
+<meta name="description " content="一点微不足道的小经验">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                processEscapes: true
+            }
+        });
+    </script>
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #00ffff; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #ff00bf, 0 0 10px #ff00bf; 
+    }
+    .pace .pace-activity {
+        border-top-color: gray;     
+        border-left-color: gray;    
+    }
+</style>
+<meta name="baidu-site-verification" content="EEIBPMlFvg">
+<meta name="google-site-verification" content="N3Fal_bR6YET3abXuRx_xPNBWUVA0d6D3x17MGZStSs">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-137195466-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-137195466-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="永">永</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="/archives" title="Archives"><i class="fa fa-archives"></i><span>Archives</span></a>
+        <a href="/tags" title="Tags"><i class="fa fa-tags"></i><span>Tags</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">NGP</h1>
+        <h3 class="cover-siteTitle">Is life always this hard or is it just when you&#39;re a kid</h3>
+        <p class="cover-siteDesc">当你老了，回顾一生，就会发觉：什么时候出国读书，什么时候决定做第一份职业、何时选定了对象而恋爱、什么时候结婚，其实都是命运的巨变。只是当时站在三岔路口，眼见风云千樯，你作出选择的那一日，在日记上，相当沉闷和平凡，当时还以为是生命中普通的一天。</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-instagram">
+        <a href target="_blank" title="instagram" ref="friend">
+            <i class="fa fa-instagram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-twitter">
+        <a href target="_blank" title="twitter" ref="friend">
+            <i class="fa fa-twitter"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/ngp320" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">Recent Posts</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/tech" data-name="科技">科技</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/arts" data-name="人文">人文</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/others" data-name="其他">其他</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text" readonly="readonly" id="local-search-input-tip" placeholder="click to search...">
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+
+
+
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://tanghao.fun/" target="_blank">
+                    <img width="48" src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/husky.png" alt="avatar">
+                </a>
+                <p><span class="label">Author</span>
+                    <a href="https://tanghao.fun/" target="_blank">97年的顽石</a>
+                    <span title="Last edited at&nbsp;2019-03-08">2019-03-08</span>
+                </p>
+                <p>一条咸鱼罢了</p>
+            </div>
+            <h2 class="post-title">Java(高级编程)日期操作类</h2>
+			
+			<!--Table of Contents begin-->
+			
+			<!--Table of Contents end -->
+			
+            <div class="post-meta">
+                emm... 3094 words in the article |
+                you are the&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>th friend who reading now
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>[TOC]</p>
+<h3 id="一-date">一. Date</h3>
+<p>    Data类的方法里面定义了如下几个重要方法:</p>
+<ul>
+<li>无参构造: public Data();</li>
+<li>有参构造: public Data(long data)，接受long型数据;</li>
+<li>转换为long型: public long getTime();</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package cn.ngp.demo;</span><br><span class="line">import java.util.Date;</span><br><span class="line">public class TestDemo &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		long time = System.currentTimeMillis();//取得当前的日期时间以long型返回</span><br><span class="line">		Date date = new Date(time);		</span><br><span class="line">		System.out.println(date);//输出对象信息</span><br><span class="line">		System.out.println(date.getTime());//输出对象信息</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>    以后的代码编写过程中，依然需要以上的转换操作，尤其是getTime()方法</p>
+<h3 id="二-日期格式化-simpledataformat-核心">二. 日期格式化: SimpleDataFormat（核心）</h3>
+<p>    java.text是一个专门实现国际化程序的开发包，而SimpleDataFormat是一个专门处理格式化日期的工具类，即: 可以将Date型的对象转化为String的形式显示。而主要使用的是以下方法:</p>
+<ul>
+<li><strong>构造方法: public SimpleDateFormat(String pattern)，需要传递转换格式</strong></li>
+<li><strong>将Data转换为String: public final String format(Data data);</strong></li>
+<li><strong>将String转换为Date: public Date parse(String source) throws ParseException;</strong></li>
+</ul>
+<p>    现在的关键就在于转换格式上，对于常见的转换格式: 年(yyyy)、月(MM)、日(dd)、时(HH)、分(mm)、秒(ss)、毫秒(SSS)。<br>
+<img src="C:%5CUsers%5CNGP%5CDesktop%5C1.png" alt><br>
+<strong>范例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package cn.ngp.demo;</span><br><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.Date;</span><br><span class="line">public class TestDemo &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Date date = new Date();</span><br><span class="line">		SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;);</span><br><span class="line">		String str = sdf.format(date); //将Date型变为String型</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>    除了可以将日期变为字符串之外，也可以将字符串转换为日期。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package cn.ngp.demo;</span><br><span class="line">import java.text.ParseException;</span><br><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.Date;</span><br><span class="line">public class TestDemo &#123;</span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line">		String str = &quot;2001-11-11 11:11:11.111&quot;;</span><br><span class="line">		SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;);</span><br><span class="line">		Date date = sdf.parse(str); //将字符串变为日期型数据</span><br><span class="line">		System.out.println(date);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>    在将字符串变为日期型数据的时候，如果日期型数据给的月不对，那么会自动进行进位。如果给定的字符串与要转换的格式不符合，那么机会出现异常。</p>
+<p><strong>总结:关于数据类型的转换</strong><br>
+    <strong>在数据表的操作里面重点说过了有几个常用类型:VARCHAR2(String)、CLOB(String)、Number(Double、int)、Date(java.util.Date)。</strong></p>
+<ul>
+<li><strong>Date与String类之间的转换依靠的是SimpleDateFormat;</strong></li>
+<li><strong>String与基本数据类型之间的转换依靠的是包装类与String.valueOf()方法;</strong></li>
+<li><strong>long与Date转换依靠的是Date类提供的构造以及getTime()方法。</strong></li>
+</ul>
+<h3 id="三-calender">三. Calender</h3>
+<p>    Date类和SimpleDate类两个往往是一起使用的，但是Calendar这个类主要是进行一些简单的日期计算的。<br>
+Calendar类定义:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Calendar</span><br><span class="line">extends Object</span><br><span class="line">implements Serializable, Cloneable, Comparable&lt;Calendar&gt;</span><br></pre></td></tr></table></figure>
+<p>    这是一个抽象类。那么应该依靠子类进行对象的实例化操作。但是在这个类里面它提供有一个static方法，此方法返回的正是本类对象: public static Calendar getInstance()。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package cn.ngp.demo;</span><br><span class="line">import java.util.Calendar;</span><br><span class="line">public class TestDemo &#123;</span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line">		Calendar cal = Calendar.getInstance(); //取得本类对象</span><br><span class="line">		StringBuffer buf= new StringBuffer();</span><br><span class="line">		buf.append(cal.get(Calendar.YEAR)).append(&quot;-&quot;);</span><br><span class="line">		buf.append(cal.get(Calendar.MONTH) + 1).append(&quot;-&quot;);</span><br><span class="line">		buf.append(cal.get(Calendar.DAY_OF_MONTH)).append(&quot; &quot;);</span><br><span class="line">		buf.append(cal.get(Calendar.HOUR_OF_DAY)).append(&quot;:&quot;);</span><br><span class="line">		buf.append(cal.get(Calendar.SECOND));</span><br><span class="line">		System.out.println(buf);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>     如果是日期计算，要比Date容易，如果使用Date要进行天的计算，那么就需要使用long完成了。</p>
+<p>总结:</p>
+<ol>
+<li>以后数据库中的日期类型就使用 java.util.Date表示;</li>
+<li>代码模型: SimpleDateFormat 类实现String与Date间的相互转换。</li>
+</ol>
+<h3 id="参考">参考</h3>
+<p>来自: 阿里云大学(笔记) → <a href="https://edu.aliyun.com/course/1012/">零基础学Java10系列三：Java高级编程</a></p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> Donate
+            </a>
+        </div>
+        
+        <div class="post-tags">Tags：
+            
+            <a href="/tags/java/">java</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">This article just represents my own viewpoint. If there is something wrong, please correct me.</p>
+    
+    
+
+    
+    
+        
+        
+        
+        
+        
+        <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"> </script>
+        <div id="gitalk-container"></div>
+        <script type="text/javascript">
+            var gitalk = new Gitalk({
+                clientID: 'fa61ee47d3bb3963923d',
+                clientSecret: '815c537bdd810b517fd3713374c49f49477d37b6',
+                id: window.location.pathname,
+                repo: 'gitalk-comment',
+                owner: 'ngp320',
+                admin: 'ngp320',
+                distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        </script>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about" title="About">About</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="Help">Help</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="Links">Links</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="SiteMap">SiteMap</a>
+        </p>
+        <p>
+            Has been established&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbspDays，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">Based on Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a><br>
+            ©2017-<span id="cpYear"></span> Based on&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，Theme by&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，Author&nbsp<a href="https://tanghao.fun/" target="_blank" rel="friend">97年的顽石</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/clipboard-use.js"></script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f41d202b2d4f8f5e6ec6372d0e49a243";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input" spellcheck="false" type="text" autocomplete="off" placeholder="Input query keywords here...">
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        var jsi_config = {
+            buildingTime: '03/26/2019',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: { dbPath: '' },
+            readMode: 'day'
+        };
+        
+            jsi_config.localSearch = {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        
+        SimpleCore.init(jsi_config);
+        
+    });
+    var host = "https://tanghao-fun-1.disqus.com/";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+</script>
+</body>
+</html>

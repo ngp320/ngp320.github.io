@@ -1,0 +1,370 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://tanghao.fun/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://tanghao.fun">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://tanghao.fun">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+
+<link rel="prerender" href="http://tanghao.fun">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://tanghao.fun">
+<meta name="author" content="97年的顽石">
+
+<link rel="stylesheet" href="/css/JSimple.css">
+<link rel="stylesheet" href="/css/gitalk_without_markdown_style.css">
+
+<link rel="shortcut icon" href="/images/husky.png">
+
+
+<title>springcloud 笔记 - 石灰粉</title>
+
+<meta name="keywords" content>
+
+<meta name="description " content="暂无概述">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                processEscapes: true
+            }
+        });
+    </script>
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #00ffff; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #ff00bf, 0 0 10px #ff00bf; 
+    }
+    .pace .pace-activity {
+        border-top-color: gray;     
+        border-left-color: gray;    
+    }
+</style>
+<meta name="baidu-site-verification" content="EEIBPMlFvg">
+<meta name="google-site-verification" content="N3Fal_bR6YET3abXuRx_xPNBWUVA0d6D3x17MGZStSs">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-137195466-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-137195466-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="永">永</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="/archives" title="Archives"><i class="fa fa-archives"></i><span>Archives</span></a>
+        <a href="/tags" title="Tags"><i class="fa fa-tags"></i><span>Tags</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">NGP</h1>
+        <h3 class="cover-siteTitle">Is life always this hard or is it just when you&#39;re a kid</h3>
+        <p class="cover-siteDesc">当你老了，回顾一生，就会发觉：什么时候出国读书，什么时候决定做第一份职业、何时选定了对象而恋爱、什么时候结婚，其实都是命运的巨变。只是当时站在三岔路口，眼见风云千樯，你作出选择的那一日，在日记上，相当沉闷和平凡，当时还以为是生命中普通的一天。</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-instagram">
+        <a href target="_blank" title="instagram" ref="friend">
+            <i class="fa fa-instagram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-twitter">
+        <a href target="_blank" title="twitter" ref="friend">
+            <i class="fa fa-twitter"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/ngp320" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">Recent Posts</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/tech" data-name="科技">科技</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/arts" data-name="人文">人文</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/others" data-name="其他">其他</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text" readonly="readonly" id="local-search-input-tip" placeholder="click to search...">
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+
+
+
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://tanghao.fun/" target="_blank">
+                    <img width="48" src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/husky.png" alt="avatar">
+                </a>
+                <p><span class="label">Author</span>
+                    <a href="https://tanghao.fun/" target="_blank">97年的顽石</a>
+                    <span title="Last edited at&nbsp;2019-04-13">2019-04-13</span>
+                </p>
+                <p>一条咸鱼罢了</p>
+            </div>
+            <h2 class="post-title">SpringCloud 笔记</h2>
+			
+			<!--Table of Contents begin-->
+			
+			<!--Table of Contents end -->
+			
+            <div class="post-meta">
+                emm... 810 words in the article |
+                you are the&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>th friend who reading now
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h3 id="一-基本知识点">一. 基本知识点:</h3>
+<h5 id="1-微服务简介">1. 微服务简介</h5>
+<p>微服务提倡将单一应用程序划分为一组微服务，每个服务运行在其自己独立的 <strong>进程</strong> 中。</p>
+<h5 id="2-springcloud-与-dubbo">2. springcloud 与 dubbo</h5>
+<p>springcloud 是基于RESTful</p>
+<p>dubbo 是基于RPC</p>
+<h5 id="3-微服务-与-微服务框架-与-springcloud-不是同一个东西">3. 微服务 与 微服务框架 与 springcloud 不是同一个东西</h5>
+<blockquote>
+<p>微服务:</p>
+<p>强调的是服务的大小，它关注的是某一个点，是具体解决某一个问题/提供落地对应服务的一个服务应用，狭义的看，可以看做Eclipse里面的一个个微服务工程/或者Module</p>
+</blockquote>
+<blockquote>
+<p>微服务架构:</p>
+<p><strong>微服务架构</strong>是一种架构模式，它提倡将单一应用程序划分为一组小的服务，服务之间互相协调、相互配合，为用户提供最终价值。每个服务运行在其<strong>独立的进程中</strong>，服务与服务间采用轻量级的通信机制相互协作(通常是基于HTTP协议的RESTful API)。每个服务都围绕着具体业务进行构建，并且能够被独立的部署到生产环境、类生产环境等。另外，<strong>应当尽量避免统一的、集中式的服务管理机制</strong>，对具体的一个服务而言，应根据业务上下文，选择合适的语言、工具对其进行构建。</p>
+</blockquote>
+<h5 id="4-springcloud和springboot是什么关系">4. SpringCloud和SpringBoot是什么关系</h5>
+<p>SpringBoot专注于快速方便的开发当个个体微服务。</p>
+<p>SpringCloud是关注全局的微服务协调整理治理框架，它将SpringBoot开发的一个个单体微服务整合并管理起来，为各个微服务之间提供，配置管理、服务发现、断路器、路由、微代理、事件总线、全局锁、决策竞选、分布式会话等等集成服务</p>
+<p>SpringBoot可以离开SpringCloud独立使用开发项目，<strong>但是SpringCloud离不开SpringBoot</strong>，属于依赖的关系。</p>
+<p><strong>SpringBoot专注于快速、方便的开发单个微服务个体，SpringCloud关注全局的服务治理框架。</strong></p>
+<h5 id="5-书籍-以及-官方教程-在-视频13-3-50处">5. 书籍 以及 官方教程 在 视频13 3:50处</h5>
+<h5 id="6">6.</h5>
+<h5 id="n">n.</h5>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> Donate
+            </a>
+        </div>
+        
+        <div class="post-tags">Tags：
+            
+            <a href="/tags/springcloud/">springcloud</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">This article just represents my own viewpoint. If there is something wrong, please correct me.</p>
+    
+    
+
+    
+    
+        
+        
+        
+        
+        
+        <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"> </script>
+        <div id="gitalk-container"></div>
+        <script type="text/javascript">
+            var gitalk = new Gitalk({
+                clientID: 'fa61ee47d3bb3963923d',
+                clientSecret: '815c537bdd810b517fd3713374c49f49477d37b6',
+                id: window.location.pathname,
+                repo: 'gitalk-comment',
+                owner: 'ngp320',
+                admin: 'ngp320',
+                distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        </script>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about" title="About">About</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="Help">Help</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="Links">Links</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="SiteMap">SiteMap</a>
+        </p>
+        <p>
+            Has been established&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbspDays，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">Based on Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a><br>
+            ©2017-<span id="cpYear"></span> Based on&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，Theme by&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，Author&nbsp<a href="https://tanghao.fun/" target="_blank" rel="friend">97年的顽石</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/clipboard-use.js"></script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f41d202b2d4f8f5e6ec6372d0e49a243";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input" spellcheck="false" type="text" autocomplete="off" placeholder="Input query keywords here...">
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        var jsi_config = {
+            buildingTime: '03/26/2019',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: { dbPath: '' },
+            readMode: 'day'
+        };
+        
+            jsi_config.localSearch = {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        
+        SimpleCore.init(jsi_config);
+        
+    });
+    var host = "https://tanghao-fun-1.disqus.com/";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+</script>
+</body>
+</html>

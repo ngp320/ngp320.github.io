@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://tanghao.fun/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://tanghao.fun">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://tanghao.fun">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+
+<link rel="prerender" href="http://tanghao.fun">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://tanghao.fun">
+<meta name="author" content="97年的顽石">
+
+<link rel="stylesheet" href="/css/JSimple.css">
+<link rel="stylesheet" href="/css/gitalk_without_markdown_style.css">
+
+<link rel="shortcut icon" href="/images/husky.png">
+
+
+<title>eclipse-for-springmvc - 石灰粉</title>
+
+<meta name="keywords" content>
+
+<meta name="description " content="暂无概述">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                processEscapes: true
+            }
+        });
+    </script>
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #00ffff; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #ff00bf, 0 0 10px #ff00bf; 
+    }
+    .pace .pace-activity {
+        border-top-color: gray;     
+        border-left-color: gray;    
+    }
+</style>
+<meta name="baidu-site-verification" content="EEIBPMlFvg">
+<meta name="google-site-verification" content="N3Fal_bR6YET3abXuRx_xPNBWUVA0d6D3x17MGZStSs">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-137195466-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-137195466-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="永">永</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="/archives" title="Archives"><i class="fa fa-archives"></i><span>Archives</span></a>
+        <a href="/tags" title="Tags"><i class="fa fa-tags"></i><span>Tags</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">NGP</h1>
+        <h3 class="cover-siteTitle">Is life always this hard or is it just when you&#39;re a kid</h3>
+        <p class="cover-siteDesc">当你老了，回顾一生，就会发觉：什么时候出国读书，什么时候决定做第一份职业、何时选定了对象而恋爱、什么时候结婚，其实都是命运的巨变。只是当时站在三岔路口，眼见风云千樯，你作出选择的那一日，在日记上，相当沉闷和平凡，当时还以为是生命中普通的一天。</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-instagram">
+        <a href target="_blank" title="instagram" ref="friend">
+            <i class="fa fa-instagram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-twitter">
+        <a href target="_blank" title="twitter" ref="friend">
+            <i class="fa fa-twitter"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/ngp320" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">Recent Posts</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/tech" data-name="科技">科技</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/arts" data-name="人文">人文</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/others" data-name="其他">其他</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text" readonly="readonly" id="local-search-input-tip" placeholder="click to search...">
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+
+
+
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://tanghao.fun/" target="_blank">
+                    <img width="48" src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/husky.png" alt="avatar">
+                </a>
+                <p><span class="label">Author</span>
+                    <a href="https://tanghao.fun/" target="_blank">97年的顽石</a>
+                    <span title="Last edited at&nbsp;2019-04-16">2019-04-16</span>
+                </p>
+                <p>一条咸鱼罢了</p>
+            </div>
+            <h2 class="post-title">Eclipse-for-Springmvc</h2>
+			
+			<!--Table of Contents begin-->
+			
+			<!--Table of Contents end -->
+			
+            <div class="post-meta">
+                emm... 1463 words in the article |
+                you are the&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>th friend who reading now
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>一. 安装Java EE开发插件(即web插件，能添加Dynamic Web Project那种)</p>
+<p>Help → Install New Software → Work With : <code>2018-12 - http://download.eclipse.org/releases/2018-12</code></p>
+<blockquote>
+<p>p.s. 因为我的Eclipse IDE的版本是2018-12</p>
+</blockquote>
+<p>展开 “Web, XML, Java EE and OSGi Enterprise Development” 选项，并且将下面三个选项打上勾：</p>
+<ul>
+<li>
+<p>Eclipse Java EE Developer Tools</p>
+</li>
+<li>
+<p>Eclipse Java Web Developer Tools</p>
+</li>
+<li>
+<p>Eclipse Web Developer Tools</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\\木有 =。= Eclipse XML Editors and Tools</span><br></pre></td></tr></table></figure>
+<p>依次点击“Next ”知道你看到 “ Review licences”的窗口。在这个窗口选择 “I accept the terms of the licence agreement” 并且点击“Finish”。</p>
+<p>二. 安装 apache tomcat6.0</p>
+<p>1 window → preferences → Server → Runtime Environments → add → 里面没有apache</p>
+<p>Help → Eclipse MarketPlace → 搜索JST Server → 安装</p>
+<p>2 此部分转自: <a href="https://blog.csdn.net/jessysong/article/details/69364337">eclipse中配置Tomcat并启动服务器发布项目</a></p>
+<blockquote>
+<p>2.1 tomcat配置：</p>
+<p>服务器 tomcat 6.0</p>
+<p>下载apache-tomcat-6.0.43.tar.gz</p>
+<p>直接解压即可使用，不用安装，解压到目录D:\</p>
+<p>环境变量的配置与JDK一样，在环境变量中添加tomcat路径就好：</p>
+<p>CATALINA_BASE=D:\apache-tomcat-6.0.43<br>
+CATALINA_HOME=D:\apache-tomcat-6.0.43</p>
+<p>接下来在eclipse中配置tomcat:</p>
+<p>添加新的Server运行时配置。点击Eclipse菜单，【Window】/【Preferences】，展开【Server】/【Runtime Environments】，</p>
+<p>这样，tomcat就配置好了。</p>
+<p>2.2 项目发布与tomcat启动</p>
+<p>在开发和调试阶段Tomcat大多是在eclipse中以插件的形式运行的。eclipse中配置Tomcat过程如下;</p>
+<p>step1:window → preferences → Server → Runtime Environments → add → apache 选择对应的版本</p>
+<p>step2:点击Next，此时若电脑上已经安装了Tomcat，则选择安装路径即可；没有安装，则点击安装按钮</p>
+<p>安装完毕后可以通过Window&gt;show view&gt;servers来显示服务器窗口，在这里就可以(在控制台右侧)看到刚才配置好的Tomcat服务器。</p>
+<p>右键&gt;Start，在Console中可以看到Tomcat的启动信息，启动完毕，打开浏览器访问当前的项目，进入项目页面，配置完成。</p>
+<p>tips：在eclipse中，Tomcat服务器可以同时发布多个项目：</p>
+<p>选中服务器，右键 → Add and Remove 在弹出的对话框中，将需要同时启动的项目移至右面，点击确定就可以同时发布多个项目。</p>
+</blockquote>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> Donate
+            </a>
+        </div>
+        
+        <div class="post-tags">Tags：
+            
+            <a href="/tags/eclipse/">eclipse</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">This article just represents my own viewpoint. If there is something wrong, please correct me.</p>
+    
+    
+
+    
+    
+        
+        
+        
+        
+        
+        <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"> </script>
+        <div id="gitalk-container"></div>
+        <script type="text/javascript">
+            var gitalk = new Gitalk({
+                clientID: 'fa61ee47d3bb3963923d',
+                clientSecret: '815c537bdd810b517fd3713374c49f49477d37b6',
+                id: window.location.pathname,
+                repo: 'gitalk-comment',
+                owner: 'ngp320',
+                admin: 'ngp320',
+                distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        </script>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about" title="About">About</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="Help">Help</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="Links">Links</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="SiteMap">SiteMap</a>
+        </p>
+        <p>
+            Has been established&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbspDays，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">Based on Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a><br>
+            ©2017-<span id="cpYear"></span> Based on&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，Theme by&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，Author&nbsp<a href="https://tanghao.fun/" target="_blank" rel="friend">97年的顽石</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/clipboard-use.js"></script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f41d202b2d4f8f5e6ec6372d0e49a243";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input" spellcheck="false" type="text" autocomplete="off" placeholder="Input query keywords here...">
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        var jsi_config = {
+            buildingTime: '03/26/2019',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: { dbPath: '' },
+            readMode: 'day'
+        };
+        
+            jsi_config.localSearch = {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        
+        SimpleCore.init(jsi_config);
+        
+    });
+    var host = "https://tanghao-fun-1.disqus.com/";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+</script>
+</body>
+</html>

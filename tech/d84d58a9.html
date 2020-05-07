@@ -1,0 +1,424 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://tanghao.fun/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://tanghao.fun">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://tanghao.fun">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+
+<link rel="prerender" href="http://tanghao.fun">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://tanghao.fun">
+<meta name="author" content="97年的顽石">
+
+<link rel="stylesheet" href="/css/JSimple.css">
+<link rel="stylesheet" href="/css/gitalk_without_markdown_style.css">
+
+<link rel="shortcut icon" href="/images/husky.png">
+
+
+<title>java(高级编程)比较器 - 石灰粉</title>
+
+<meta name="keywords" content>
+
+<meta name="description " content="一点微不足道的小经验">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                processEscapes: true
+            }
+        });
+    </script>
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #00ffff; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #ff00bf, 0 0 10px #ff00bf; 
+    }
+    .pace .pace-activity {
+        border-top-color: gray;     
+        border-left-color: gray;    
+    }
+</style>
+<meta name="baidu-site-verification" content="EEIBPMlFvg">
+<meta name="google-site-verification" content="N3Fal_bR6YET3abXuRx_xPNBWUVA0d6D3x17MGZStSs">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-137195466-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-137195466-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="永">永</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="/archives" title="Archives"><i class="fa fa-archives"></i><span>Archives</span></a>
+        <a href="/tags" title="Tags"><i class="fa fa-tags"></i><span>Tags</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">NGP</h1>
+        <h3 class="cover-siteTitle">Is life always this hard or is it just when you&#39;re a kid</h3>
+        <p class="cover-siteDesc">当你老了，回顾一生，就会发觉：什么时候出国读书，什么时候决定做第一份职业、何时选定了对象而恋爱、什么时候结婚，其实都是命运的巨变。只是当时站在三岔路口，眼见风云千樯，你作出选择的那一日，在日记上，相当沉闷和平凡，当时还以为是生命中普通的一天。</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-instagram">
+        <a href target="_blank" title="instagram" ref="friend">
+            <i class="fa fa-instagram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-twitter">
+        <a href target="_blank" title="twitter" ref="friend">
+            <i class="fa fa-twitter"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/ngp320" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">Recent Posts</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/tech" data-name="科技">科技</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/arts" data-name="人文">人文</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/others" data-name="其他">其他</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text" readonly="readonly" id="local-search-input-tip" placeholder="click to search...">
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+
+
+
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://tanghao.fun/" target="_blank">
+                    <img width="48" src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/husky.png" alt="avatar">
+                </a>
+                <p><span class="label">Author</span>
+                    <a href="https://tanghao.fun/" target="_blank">97年的顽石</a>
+                    <span title="Last edited at&nbsp;2019-03-08">2019-03-08</span>
+                </p>
+                <p>一条咸鱼罢了</p>
+            </div>
+            <h2 class="post-title">Java(高级编程)比较器</h2>
+			
+			<!--Table of Contents begin-->
+			
+			<!--Table of Contents end -->
+			
+            <div class="post-meta">
+                emm... 9631 words in the article |
+                you are the&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>th friend who reading now
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>[TOC]</p>
+<h3 id="一-比较器-arrays类">一. 比较器 （Arrays类）</h3>
+<p>     在之前一直使用 “java.util.Arrays.sort()” 可以实现数组的排序，而Arrays类就是java.util包中提供的一个工具类，这个工具类主要是完成数组有关的操作功能。<br>
+     在这个类里面存在二分查找法:<br>
+public static int binarySearch(byte[] a,byte key)<br>
+public static int binarySearch(数据类型[] a, 数据类型  key)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package cn.ngp.demo;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">public class TestDemo &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int[] data = new int[] &#123;1,5,6,2,3,4,9,8,7,10&#125;;</span><br><span class="line">		java.util.Arrays.sort(data);// 排序</span><br><span class="line">		System.out.println(Arrays.binarySearch(data, 9));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>     Arrays类提供了数据比较: public static boolean equals(数据类型 [] a，数据类型[] a2)，只不过借用了equals()方法名称，与Object类的equals()屁关系都没有。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package cn.ngp.demo;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">public class TestDemo &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int[] dataA = new int[] &#123;1,2,3&#125;;</span><br><span class="line">		int[] dataB = new int[] &#123;1,2,3&#125;;</span><br><span class="line">		System.out.println(Arrays.equals(dataA, dataB));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>     要判断数组是否相同，需要顺序完全一致。</p>
+<p>其他操作:</p>
+<ul>
+<li>填充数组: static void	fill(数据类型[] a, 数据类型 val);</li>
+<li>将数组变为字符串输出: public static String toString(数据类型 [] a);</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package cn.ngp.demo;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">public class TestDemo &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int[] data = new int[10];</span><br><span class="line">		Arrays.fill(data, 3);</span><br><span class="line">		System.out.println(Arrays.toString(data));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>     以上实际上就属于数组的基本操作，只不过这样的操作在实际的开发里面很少出现。</p>
+<h3 id="二-比较器-comparable-核心">二. 比较器 Comparable（核心）</h3>
+<p>     下面来观察一下Arrays类中提供的数组排序方法:</p>
+<blockquote>
+<ul>
+<li>对象数组排序: public static void sort(Object[] a);<br>
+     发现Arrays类里面可以直接利用sort()方法实现对象数组排序。</li>
+</ul>
+</blockquote>
+<p>范例(错误):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package cn.ngp.demo;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">class Book &#123;</span><br><span class="line">	private String title;</span><br><span class="line">	private double price;</span><br><span class="line">	public Book(String title, double price) &#123;</span><br><span class="line">		this.title = title;</span><br><span class="line">		this.price = price;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public String toString() &#123;</span><br><span class="line">		return &quot;书名：《&quot; + this.title + &quot;》，价格：&quot; + this.price + &quot;元。&quot; + &quot;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">public class TestDemo &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Book books[] = new Book[] &#123; </span><br><span class="line">				new Book(&quot;Java从入门到精通&quot;, 79.6),</span><br><span class="line">				new Book(&quot;Oracle从入门到精通&quot;, 88.6),</span><br><span class="line">				new Book(&quot;Android从入门到精通&quot;, 66.9) &#125;;</span><br><span class="line">		Arrays.sort(books);</span><br><span class="line">		System.out.println(Arrays.toString(books));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Exception in thread “main” java.lang.ClassCastException: cn.ngp.demo.Book cannot be cast to java.lang.Comparable<br>
+	at java.util.ComparableTimSort.countRunAndMakeAscending(Unknown Source)<br>
+	at java.util.ComparableTimSort.sort(Unknown Source)<br>
+	at java.util.Arrays.sort(Unknown Source)<br>
+	at cn.ngp.demo.TestDemo.main(TestDemo.java:21)</p>
+</blockquote>
+<p>     造成此类异常只有一个原因: 两个没有关系的类对象发生了强制性的转换。<br>
+     每一个对象实际上只保留有地址信息，地址里面是有内容的，所以如果是普通的int型数据要进行比较，只要判断大小就够了，但是如果是对象数组，里面包含的如果只是编码（地址）比较式没意义的 ，就拿上面的代码来讲，应该按照价格排序才是有意义的，所以此处必须明确设置出比较的规则:<br>
+     比较的规则就是由Comparable接口定义的，此接口定义如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Comparable&lt;T&gt; &#123;</span><br><span class="line">	public int compareTo(T o);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>     实际上String类就是Comparable接口的子类，之前使用的compareTo()方法就是比较的操作功能，如果用户现在针对于对象进行比较，建议compareTo()方法返回三类数据: 1(大于)、0(等于)、-1(小于)</p>
+<p>范例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package cn.ngp.demo;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">class Book implements Comparable&lt;Book&gt; &#123;</span><br><span class="line">	private String title;</span><br><span class="line">	private double price;</span><br><span class="line">	public Book(String title, double price) &#123;</span><br><span class="line">		this.title = title;</span><br><span class="line">		this.price = price;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public String toString() &#123;</span><br><span class="line">		return &quot;书名：《&quot; + this.title + &quot;》，价格：&quot; + this.price + &quot;元。&quot; + &quot;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public int compareTo(Book o) &#123;</span><br><span class="line">		if (this.price &gt; o.price) &#123;</span><br><span class="line">			return 1;</span><br><span class="line">		&#125; else if (this.price &lt; o.price) &#123;</span><br><span class="line">			return -1;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">public class TestDemo &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Book books[] = new Book[] &#123; </span><br><span class="line">				new Book(&quot;Java从入门到精通&quot;, 79.6),</span><br><span class="line">				new Book(&quot;Oracle从入门到精通&quot;, 88.6),</span><br><span class="line">				new Book(&quot;Android从入门到精通&quot;, 66.9) &#125;;</span><br><span class="line">		Arrays.sort(books);</span><br><span class="line">		System.out.println(Arrays.toString(books));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>     compareTo()方法由Arrays.sort()自动进行调用。</p>
+<p><strong>总结:</strong></p>
+<ul>
+<li><strong>以后不管何种情况下，只要是一组对象要排序，对象所在的类一定要实现comparable接口。</strong></li>
+</ul>
+<h3 id="三-数据结构-binarytree-了解">三. 数据结构 —— BinaryTree（了解）</h3>
+<p>     树是一种比链表更为复杂的概念应用，本质也属于动态对象数组，但是与链表不同在于，树的最大特征是可以针对于数据进行排序。<br>
+     树的操作原理: 选择第一个数据作为根节点，而后比根节点小的放在根节点的左子树（左节点），比根节点大的数据放在右子书（右节点），取得的时候按照中序遍历的方式取出（左-中-右）。<br>
+     在任何数据结构里面Node类的核心功能是保存真实数据以及配置节点关系。</p>
+<p>范例: 实现二叉树</p>
+<ul>
+<li>定义出要使用的数据，数据所在的类实现comparable接口</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">package cn.ngp.demo;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">class Book implements Comparable&lt;Book&gt; &#123;</span><br><span class="line">	private String title;</span><br><span class="line">	private double price;</span><br><span class="line">	public Book(String title, double price) &#123;</span><br><span class="line">		this.title = title;</span><br><span class="line">		this.price = price;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public String toString() &#123;</span><br><span class="line">		return &quot;书名：《&quot; + this.title + &quot;》，价格：&quot; + this.price + &quot;元。&quot; + &quot;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public int compareTo(Book o) &#123;</span><br><span class="line">		if (this.price &gt; o.price) &#123;</span><br><span class="line">			return 1;</span><br><span class="line">		&#125; else if (this.price &lt; o.price) &#123;//此处改为&quot;&gt;&quot;号，即变为升序输出</span><br><span class="line">			return -1;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">@SuppressWarnings(&quot;rawtypes&quot;)</span><br><span class="line">class BinaryTree&#123;</span><br><span class="line">	private class Node&#123;</span><br><span class="line">		private Comparable data;//排序的依据就是Comparable</span><br><span class="line">		private Node left;	//保存左节点</span><br><span class="line">		private Node right;	//保存右节点</span><br><span class="line">		@SuppressWarnings(&quot;unused&quot;)</span><br><span class="line">		public Node(Comparable data) &#123;</span><br><span class="line">			this.data = data;</span><br><span class="line">		&#125;</span><br><span class="line">		@SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">		public void addNode(Node newNode) &#123;</span><br><span class="line">			if(this.data.compareTo(newNode.data) &lt; 0) &#123;</span><br><span class="line">				if(this.left == null) &#123;</span><br><span class="line">					this.left = newNode;</span><br><span class="line">				&#125;else &#123;</span><br><span class="line">					this.left.addNode(newNode);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				if(this.right == null) &#123;</span><br><span class="line">					this.right = newNode;</span><br><span class="line">				&#125;else &#123;</span><br><span class="line">					this.right.addNode(newNode);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		public void toArrayNode() &#123;</span><br><span class="line">			if(this.left != null) &#123;//表示有左节点</span><br><span class="line">				this.left.toArrayNode();</span><br><span class="line">			&#125;</span><br><span class="line">			BinaryTree.this.retData[BinaryTree.this.foot ++] = this.data;</span><br><span class="line">			if(this.right != null) &#123;</span><br><span class="line">				this.right.toArrayNode();//右子树输出</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	private Node root;	//定义根节点</span><br><span class="line">	private int count;  //保存元素个数</span><br><span class="line">	private Object [] retData;</span><br><span class="line">	private int foot;</span><br><span class="line">	public void add(Object obj) &#123;//进行数据的追加</span><br><span class="line">		Comparable com = (Comparable) obj;//必须编程comparable才可以实现Node保存</span><br><span class="line">		Node newNode = new Node(com);//创建新的节点</span><br><span class="line">		if(this.root == null) &#123;//现在不存在根节点</span><br><span class="line">			this.root = newNode;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			this.root.addNode(newNode);</span><br><span class="line">		&#125;</span><br><span class="line">		this.count ++;</span><br><span class="line">	&#125;</span><br><span class="line">	public Object[] toArray() &#123;</span><br><span class="line">		if(this.root == null) &#123;</span><br><span class="line">			return null;</span><br><span class="line">		&#125;</span><br><span class="line">		this.foot = 0;</span><br><span class="line">		this.retData = new Object[this.count];</span><br><span class="line">		this.root.toArrayNode();</span><br><span class="line">		return  this.retData;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">public class TestDemo &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		BinaryTree bt = new BinaryTree();</span><br><span class="line">		bt.add(new Book(&quot;Java从入门到精通&quot;, 79.8));</span><br><span class="line">		bt.add(new Book(&quot;JSP从入门到精通&quot;, 68.8));</span><br><span class="line">		bt.add(new Book(&quot;Oracle从入门到精通&quot;, 98.8));</span><br><span class="line">		bt.add(new Book(&quot;Android从入门到精通&quot;, 89.8));</span><br><span class="line">		Object obj[] = bt.toArray();</span><br><span class="line">		System.out.println(Arrays.toString(obj));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>     可是这些内容，Java的类库都有了自己的实现，所以这个代码是基本功的问题。<br>
+     <strong>自己对以上代码的理解: 用二叉树的结构实现了一种插入式的链表</strong></p>
+<h3 id="四-挽救的比较器-comparator-理解">四. 挽救的比较器 Comparator （理解）</h3>
+<p>     由于初期的设计并没有安排此类对象数组的排序。而后又突然需要实现对象数组的排序，那么这个时候，在不能修改Book类定义的情况下是不可能使用Comparable接口的，为此，在Java里面为了解决这个问题，又出现了另一个比较器: java.util.Comparator ，原本在Comparator接口下有两个方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface Comparator&lt;T&gt;&#123;</span><br><span class="line">	int compare(T o1, T o2)</span><br><span class="line">	boolean equals(Object obj)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>     而真正实现的只有compara()方法，需要单独准备出一个类来实现Comparator接口，这个类将作为指定类的排序类。</p>
+<p><strong>范例:</strong> 定义排序的工具类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">package cn.ngp.demo;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Comparator;</span><br><span class="line">class Book &#123;</span><br><span class="line">	private String title;</span><br><span class="line">	private double price;</span><br><span class="line">	public Book() &#123;&#125;</span><br><span class="line">	public Book(String title,double price) &#123;</span><br><span class="line">		this.title = title;</span><br><span class="line">		this.price = price;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getTitle() &#123;</span><br><span class="line">		return title;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setTitle(String title) &#123;</span><br><span class="line">		this.title = title;</span><br><span class="line">	&#125;</span><br><span class="line">	public double getPrice() &#123;</span><br><span class="line">		return price;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setPrice(double price) &#123;</span><br><span class="line">		this.price = price;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public String toString() &#123;</span><br><span class="line">		return &quot;书名: &quot; + this.title + &quot;, 价格: &quot; + this.price + &quot;\n&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class BookComparator implements Comparator&lt;Book&gt;&#123;</span><br><span class="line">	@Override</span><br><span class="line">	public int compare(Book o1, Book o2) &#123;</span><br><span class="line">		if(o1.getPrice() &gt; o2.getPrice()) &#123;</span><br><span class="line">			return 1;</span><br><span class="line">		&#125;else if(o1.getPrice() &lt; o2.getPrice()) &#123;</span><br><span class="line">			return -1;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">public class TestDemo &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Book books [] = new Book [] &#123;				</span><br><span class="line">			new Book(&quot;Java从入门到精通&quot;, 79.8),</span><br><span class="line">			new Book(&quot;JSP从入门到精通&quot;, 68.8),</span><br><span class="line">			new Book(&quot;Oracle从入门到精通&quot;, 98.8),</span><br><span class="line">			new Book(&quot;Android从入门到精通&quot;, 89.8)</span><br><span class="line">		&#125;;</span><br><span class="line">		//之前使用Comparable 接口的时候利用的是Arrays类中的sort()方法，</span><br><span class="line">		//可是现在更换了一个接口之后，那么也可以使用另外一个被重载的sort()方法:</span><br><span class="line">		//public static &lt;T&gt; void sort(T[] a,Comparator&lt;? super T&gt; c)</span><br><span class="line">		Arrays.sort(books,new BookComparator());</span><br><span class="line">		System.out.println(Arrays.toString(books));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>     使用Comparator比较麻烦，因为要定义一个专门的排序类，而且调用排序的时候也要明确的指明一个排序规则类。<br>
+<strong>面试题:</strong> 请解释Comparable 和Comparator的区别？（面试题: 请解释两种比较器的区别）</p>
+<ul>
+<li>如果对象数组要进行排序那么必须设置排序规则，可以使用Compatable或Comparator接口实现;</li>
+<li>java.lang.Comparable 是在一个类定义的时候实现好的接口，这样本类的对象的数组就可以进行排序，在Comparable接口下定义有一个CompareTo()方法</li>
+<li>java.util.Comparator 是专门定义一个指定类的比较规则，属于挽救的比较操作，里面有两个方法: public int compare()、public boolean equals()。</li>
+</ul>
+<p><strong>总结:</strong></p>
+<ol>
+<li>以后不管何种情况下只要是牵扯到对象数组的排序一定使用Comparable接口;</li>
+<li>根据自己的实际情况来决定是否要熟练编写链表</li>
+</ol>
+<h3 id="参考">参考</h3>
+<p>来自: 阿里云大学(笔记) → <a href="https://edu.aliyun.com/course/1012/">零基础学Java10系列三：Java高级编程</a></p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> Donate
+            </a>
+        </div>
+        
+        <div class="post-tags">Tags：
+            
+            <a href="/tags/java/">java</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">This article just represents my own viewpoint. If there is something wrong, please correct me.</p>
+    
+    
+
+    
+    
+        
+        
+        
+        
+        
+        <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"> </script>
+        <div id="gitalk-container"></div>
+        <script type="text/javascript">
+            var gitalk = new Gitalk({
+                clientID: 'fa61ee47d3bb3963923d',
+                clientSecret: '815c537bdd810b517fd3713374c49f49477d37b6',
+                id: window.location.pathname,
+                repo: 'gitalk-comment',
+                owner: 'ngp320',
+                admin: 'ngp320',
+                distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        </script>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about" title="About">About</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="Help">Help</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="Links">Links</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="SiteMap">SiteMap</a>
+        </p>
+        <p>
+            Has been established&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbspDays，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">Based on Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a><br>
+            ©2017-<span id="cpYear"></span> Based on&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，Theme by&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，Author&nbsp<a href="https://tanghao.fun/" target="_blank" rel="friend">97年的顽石</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/clipboard-use.js"></script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f41d202b2d4f8f5e6ec6372d0e49a243";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input" spellcheck="false" type="text" autocomplete="off" placeholder="Input query keywords here...">
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        var jsi_config = {
+            buildingTime: '03/26/2019',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: { dbPath: '' },
+            readMode: 'day'
+        };
+        
+            jsi_config.localSearch = {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        
+        SimpleCore.init(jsi_config);
+        
+    });
+    var host = "https://tanghao-fun-1.disqus.com/";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+</script>
+</body>
+</html>

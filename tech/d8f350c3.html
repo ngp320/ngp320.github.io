@@ -1,0 +1,448 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://tanghao.fun/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://tanghao.fun">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://tanghao.fun">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+
+<link rel="prerender" href="http://tanghao.fun">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://tanghao.fun">
+<meta name="author" content="97年的顽石">
+
+<link rel="stylesheet" href="/css/JSimple.css">
+<link rel="stylesheet" href="/css/gitalk_without_markdown_style.css">
+
+<link rel="shortcut icon" href="/images/husky.png">
+
+
+<title>notepad++-插件-技巧 - 石灰粉</title>
+
+<meta name="keywords" content="npp插件,npp 插件,notepad++插件,notepad++ 插件">
+
+<meta name="description " content="你所不知道的Notepad++ → 常用快捷键，NppExec编译、运行Java和python,cmd用notepad++批量打开文件,compare比较插件，NavigateTo插件在打开的文件之中查找文件名，.ejs 文件匹配 代码高亮">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                processEscapes: true
+            }
+        });
+    </script>
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #00ffff; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #ff00bf, 0 0 10px #ff00bf; 
+    }
+    .pace .pace-activity {
+        border-top-color: gray;     
+        border-left-color: gray;    
+    }
+</style>
+<meta name="baidu-site-verification" content="EEIBPMlFvg">
+<meta name="google-site-verification" content="N3Fal_bR6YET3abXuRx_xPNBWUVA0d6D3x17MGZStSs">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-137195466-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-137195466-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="永">永</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="/archives" title="Archives"><i class="fa fa-archives"></i><span>Archives</span></a>
+        <a href="/tags" title="Tags"><i class="fa fa-tags"></i><span>Tags</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">NGP</h1>
+        <h3 class="cover-siteTitle">Is life always this hard or is it just when you&#39;re a kid</h3>
+        <p class="cover-siteDesc">当你老了，回顾一生，就会发觉：什么时候出国读书，什么时候决定做第一份职业、何时选定了对象而恋爱、什么时候结婚，其实都是命运的巨变。只是当时站在三岔路口，眼见风云千樯，你作出选择的那一日，在日记上，相当沉闷和平凡，当时还以为是生命中普通的一天。</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-instagram">
+        <a href target="_blank" title="instagram" ref="friend">
+            <i class="fa fa-instagram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-twitter">
+        <a href target="_blank" title="twitter" ref="friend">
+            <i class="fa fa-twitter"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/ngp320" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">Recent Posts</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/tech" data-name="科技">科技</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/arts" data-name="人文">人文</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/others" data-name="其他">其他</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text" readonly="readonly" id="local-search-input-tip" placeholder="click to search...">
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+
+
+
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://tanghao.fun/" target="_blank">
+                    <img width="48" src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/husky.png" alt="avatar">
+                </a>
+                <p><span class="label">Author</span>
+                    <a href="https://tanghao.fun/" target="_blank">97年的顽石</a>
+                    <span title="Last edited at&nbsp;2019-04-06">2019-04-06</span>
+                </p>
+                <p>一条咸鱼罢了</p>
+            </div>
+            <h2 class="post-title">Notepad++-插件-技巧</h2>
+			
+			<!--Table of Contents begin-->
+			
+			<!--Table of Contents end -->
+			
+            <div class="post-meta">
+                emm... 3425 words in the article |
+                you are the&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>th friend who reading now
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h3 id="一-常用快捷键">一. 常用快捷键</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[Ctrl]+ G 跳到指定行</span><br><span class="line"></span><br><span class="line">[Ctrl]+ D 复制一行</span><br><span class="line">[Ctrl]+ L 剪切一行</span><br><span class="line"></span><br><span class="line">上移当前行 [Ctrl]+[ShiFt]+Up </span><br><span class="line">下移当前行 [Ctrl]+[ShiFt]+Down</span><br><span class="line"></span><br><span class="line">缩进 [Tab] </span><br><span class="line">删除缩进 [ShiFt]+[Tab] </span><br><span class="line"></span><br><span class="line">[Alt] + 0 折叠所有层次</span><br><span class="line">[Alt] +[ShiFt] + 0 展开所有层次</span><br><span class="line">[Alt] + F 折叠当前层次</span><br><span class="line">[Alt] +[ShiFt] + F 展开当前层次</span><br><span class="line"></span><br><span class="line">[Ctrl]+[ShiFt]+Q区块注释</span><br><span class="line">[Ctrl]+K行注释(取消 [Ctrl] + [ShiFt] + K)</span><br><span class="line"></span><br><span class="line">查找下一个 F3 </span><br><span class="line">查找上一个 Shift+F3 </span><br><span class="line">行定位 Ctrl+G </span><br><span class="line"></span><br><span class="line">[Ctrl]+ [ 跳到上一空行的下一行</span><br><span class="line">[Ctrl]+ ] 跳到下一空行的下一行</span><br></pre></td></tr></table></figure>
+<h3 id="二-插件推荐">二. 插件推荐</h3>
+<p>插件安装方式 ：最新版notepad++自带的插件管理</p>
+<p>or 手动安装插件</p>
+<p>把dll文件放到C:\Program Files (x86)\Notepad++\plugins</p>
+<p>再notepad++ → 设置 → 导入 → 插件 → 选择该dll</p>
+<h4 id="1-nppexec">1. NppExec →</h4>
+<h5 id="1-1-notepad-如何编译-运行java">1.1. <a href="https://www.cnblogs.com/geek1116/p/5944228.html">Notepad++如何编译、运行Java</a></h5>
+<blockquote>
+<p>点Execute，在下面的文本域中输入下面命令参数（和cmd相似的代码）：<br>
+<code>NPP_SAVE</code><br>
+<code>javac &quot;$(FILE_NAME)&quot;</code><br>
+<code>java &quot;$(NAME_PART)&quot;</code><br>
+点击save，给这个<code>编译命令</code>命名（例如: <code>Java_compiler&amp;run</code>），最后点OK。  在语言中选择好Java，再在文本域中编辑好自己的代码，按F6快捷键，点击OK，控制台出现代码运行的结果。</p>
+</blockquote>
+<p>p.s. 如果是包编译的话(<code>package cn.ngp.demo;</code>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npp_save</span><br><span class="line">cd   $(CURRENT_DIRECTORY)</span><br><span class="line">javac -d . &quot;$(FILE_NAME)&quot; -encoding utf-8</span><br><span class="line">java cn.ngp.demo.&quot;$(NAME_PART)&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://www.cnblogs.com/radio/p/3189323.html">高级选项保存操作</a><br>
+一. 插件 → NppExec → advanced options<br>
+二. 在左下方Associated script选择上我们之前命名的<code>Java_compiler&amp;run</code>,然后在Item name取个名字（例如:<code>编译&amp;运行Java文件</code>），点Add/Modify，然后点OK<br>
+三. 配置快捷键    setting(设置) → shortcut mapper(管理快捷键) → plugin commands(插件命令) ，翻到最下面一行，找到<code>编译&amp;运行Java文件</code>，双击修改。(如果没有，重启一下Notepad++)<br>
+把<code>编译&amp;运行Java文件</code>对应快捷键设置为<code>Alt+R</code>，设置完成。</p>
+</blockquote>
+<h4 id="2-f5-自带插件">2. F5 (自带插件)→</h4>
+<p><a href="https://blog.csdn.net/u013793399/article/details/51291017">如何用 Notepad++ 运行 Python 脚本(版本3.X)</a></p>
+<p>notepad++ cmd 运行 python:</p>
+<blockquote>
+<ol>
+<li>Notepad++ → &quot;运行&quot;菜单 → &quot;运行&quot;按钮<br>
+<strong>或者</strong> Notepad++ → 按快捷键F5</li>
+<li>在弹出的窗口内输入以下命令：<br>
+cmd /k python “$(FULL_CURRENT_PATH)” &amp; ECHO. &amp; PAUSE &amp; EXIT</li>
+<li>按ok或者回车运行即可<br>
+p.s. 此时即可调用cmd运行python程序</li>
+</ol>
+</blockquote>
+<h4 id="3-notepad-特殊技巧">3. notepad++ 特殊技巧</h4>
+<p>各软件的命令行参数是各作者自己的设计，</p>
+<p>不必照搬或试探，</p>
+<p>你只需查阅各软件本身的帮助文档。</p>
+<p>若是Notepad++：</p>
+<p>打开[?]菜单 &gt;&gt; Command Line Arguments</p>
+<p>或者 &gt;&gt; 帮助。</p>
+<p>▲递归 用：-r</p>
+<p>另外，</p>
+<p>▲命令行普遍可以带路径，不必非得先转到某个路径。</p>
+<p>▲cmd窗口支持拖放。拖入程序/文件，即转成路径文字。</p>
+<p>▲命令行不必非得在cmd窗口中使用。[运行]、快捷方式、程序调用……</p>
+<p>cmd输入 →</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">notepad++ * -r              //打开当前文件夹所有子文件, *表示当前目录下所有子文件</span><br><span class="line">notepad++ tag\source\   -r  //打开某source子文件夹下所有文件，-r表示递归，即打开文件的子文件</span><br><span class="line">notepad++ tag\source\ * -r  //则会打开 tag父文件夹 的 【所有子文件夹以及文件夹】</span><br></pre></td></tr></table></figure>
+<h4 id="4-compare-文件比较插件">4. compare <strong>文件比较插件</strong></h4>
+<p>4.1 打开要 <code>比较的文件</code> 的 <code>其中一个文件</code> 后，标记为 文件1 (两种方式) ：<br>
+① [Ctrl] + [Alt] + 1<br>
+② 打开文件后，按 “菜单栏“ 的 → <img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2019-03-30-compare1.png" alt="1"></p>
+<p>4.2 打开要 <code>比较的文件</code> 的 <code>另一个文件</code> 后，开始比较 (两种方式)<br>
+① [Ctrl] + [Alt] + C<br>
+② 打开文件后，按 “菜单栏“ 的 → <img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2019-03-30-compare2.png" alt="1"></p>
+<p>4.3 关闭比较(两种方式)</p>
+<pre><code>① 关闭其中一个文件
+② 打开文件后，按 “菜单栏“ 的 → ![1](D:/blog/source/images/2019-03-30-compare3.png)
+</code></pre>
+<h4 id="5-navigate-to-在打开的文件之中查找文件名">5. Navigate To 在打开的文件之中查找文件名</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Ctrl]+ , 	(跳转到没错就是逗号)</span><br></pre></td></tr></table></figure>
+<h4 id="6-textfx-仅32位">6. TextFX(仅32位)</h4>
+<p>Notepad<ins>插件TextFX  Characters是一款默认安装的插件，由于功能强大，被编程爱好者认为是最好的Notepad</ins>插件，</p>
+<p>几个常用命令功能：</p>
+<p>7.1 删除程序空行<br>
+选择相应的文本<br>
+点击TextFX —&gt; TextFX Edit —&gt; Delete Blank Lines<br>
+点击TextFX —&gt; TextFX Edit —&gt; Delete Surplus Blank Lines</p>
+<p>7.2 为代码增加行号<br>
+选择要增加行号的文本(选择时会提示“No text selected”)<br>
+点击TextFX —&gt; TextFX Tools —&gt; Insert Line Numbers</p>
+<p>7.3 删除程序行号或者首字<br>
+选择相应的文本<br>
+点击TextFX —&gt; TextFX Tools —&gt; Delete Line Numbers or First word</p>
+<p>7.4 整理xml文本格式。<br>
+这个功能不错，可以很快将一行文本整理成规范的xml文件。(这个功能用来处理blogger的xml文档很不错，我自己的文档经过无数次的编辑已经乱得不成样子，经过这样一整理，可读性大大提高。)<br>
+选中所有文本<br>
+点击TextFX—&gt;HTML Tidy—&gt;Tidy: Reindent XML<br>
+同样在处理HTML文件，也有类似功能。</p>
+<p>7.5 改变字符大小写<br>
+选择相应的文本<br>
+点击TextFX —&gt; TextFX Characters, 可以选择如下几种形式：<br>
+UPPER CASE 全部大写<br>
+lower case 全部小写<br>
+Proper Case 首字大写<br>
+Sentense case 句子模式<br>
+iNVERT cASE 首字小写，其他大写</p>
+<p>7.6 去掉文本中的HTML元素<br>
+选择HTML元素<br>
+点击TextFX —&gt; TextFX Convert —&gt; Strip HTML tags table tabs</p>
+<p>7.7 转换为HTML实体<br>
+即把“&lt;”转换成“&lt;”、把“&gt;”转换成 “&gt;”。（可以用来轻松为blogger的文章插入代码。）<br>
+选择相应的文本<br>
+点击TextFX —&gt; TextFX Convert —&gt; Encode HTML (&amp;&lt;&gt;&quot;)</p>
+<h4 id="8-auto-save-每1分钟and切换别的程序时自动保存所有文档更改">8. Auto Save(每1分钟and切换别的程序时自动保存所有文档更改)</h4>
+<h5 id="tips-ejs文件代码高亮">tips. <code>.ejs</code>文件代码高亮</h5>
+<p>设置 → 语言格式设置 → 左边选择JavaScript(有两个) → 添加自定义扩展名 ejs  → 重新打开 notepad++ 几次 → ejs文件就会按照js高亮了</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> Donate
+            </a>
+        </div>
+        
+        <div class="post-tags">Tags：
+            
+            <a href="/tags/notepad/">notepad++</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">This article just represents my own viewpoint. If there is something wrong, please correct me.</p>
+    
+    
+
+    
+    
+        
+        
+        
+        
+        
+        <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"> </script>
+        <div id="gitalk-container"></div>
+        <script type="text/javascript">
+            var gitalk = new Gitalk({
+                clientID: 'fa61ee47d3bb3963923d',
+                clientSecret: '815c537bdd810b517fd3713374c49f49477d37b6',
+                id: window.location.pathname,
+                repo: 'gitalk-comment',
+                owner: 'ngp320',
+                admin: 'ngp320',
+                distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        </script>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about" title="About">About</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="Help">Help</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="Links">Links</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="SiteMap">SiteMap</a>
+        </p>
+        <p>
+            Has been established&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbspDays，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">Based on Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a><br>
+            ©2017-<span id="cpYear"></span> Based on&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，Theme by&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，Author&nbsp<a href="https://tanghao.fun/" target="_blank" rel="friend">97年的顽石</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/clipboard-use.js"></script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f41d202b2d4f8f5e6ec6372d0e49a243";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input" spellcheck="false" type="text" autocomplete="off" placeholder="Input query keywords here...">
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        var jsi_config = {
+            buildingTime: '03/26/2019',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: { dbPath: '' },
+            readMode: 'day'
+        };
+        
+            jsi_config.localSearch = {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        
+        SimpleCore.init(jsi_config);
+        
+    });
+    var host = "https://tanghao-fun-1.disqus.com/";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+</script>
+</body>
+</html>

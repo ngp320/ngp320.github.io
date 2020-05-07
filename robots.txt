@@ -1,0 +1,18 @@
+# hexo robots.txt
+User-agent: * 
+Allow: /tags/
+Allow: /post/
+Allow: /
+Allow: /*.html
+Allow: /archives/
+Disallow: /categories/
+Disallow: /css/
+Disallow: /help/
+Disallow: /images/
+Disallow: /js/
+Disallow: /page/
+Disallow: /search.xml
+Disallow: /*.md
+
+Sitemap: http://tanghao.fun/sitemap.xml
+Sitemap: http://tanghao.fun/baidusitemap.xml

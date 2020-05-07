@@ -1,0 +1,546 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://tanghao.fun/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://tanghao.fun">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://tanghao.fun">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+
+<link rel="prerender" href="http://tanghao.fun">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://tanghao.fun">
+<meta name="author" content="97年的顽石">
+
+<link rel="stylesheet" href="/css/JSimple.css">
+<link rel="stylesheet" href="/css/gitalk_without_markdown_style.css">
+
+<link rel="shortcut icon" href="/images/husky.png">
+
+
+<title>编译原理_计算器_flex、bison实现_（从零开始) - 石灰粉</title>
+
+<meta name="keywords" content="编译原理计算器">
+
+<meta name="description " content="这篇文章只能助你改程序，并不能让你从零独自编写出程序 附赠安装配置环境的教程（毕竟很多人卡在第一步嘛(￣▽￣)／）">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                processEscapes: true
+            }
+        });
+    </script>
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #00ffff; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #ff00bf, 0 0 10px #ff00bf; 
+    }
+    .pace .pace-activity {
+        border-top-color: gray;     
+        border-left-color: gray;    
+    }
+</style>
+<meta name="baidu-site-verification" content="EEIBPMlFvg">
+<meta name="google-site-verification" content="N3Fal_bR6YET3abXuRx_xPNBWUVA0d6D3x17MGZStSs">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-137195466-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-137195466-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="永">永</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="/archives" title="Archives"><i class="fa fa-archives"></i><span>Archives</span></a>
+        <a href="/tags" title="Tags"><i class="fa fa-tags"></i><span>Tags</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">NGP</h1>
+        <h3 class="cover-siteTitle">Is life always this hard or is it just when you&#39;re a kid</h3>
+        <p class="cover-siteDesc">当你老了，回顾一生，就会发觉：什么时候出国读书，什么时候决定做第一份职业、何时选定了对象而恋爱、什么时候结婚，其实都是命运的巨变。只是当时站在三岔路口，眼见风云千樯，你作出选择的那一日，在日记上，相当沉闷和平凡，当时还以为是生命中普通的一天。</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-instagram">
+        <a href target="_blank" title="instagram" ref="friend">
+            <i class="fa fa-instagram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-twitter">
+        <a href target="_blank" title="twitter" ref="friend">
+            <i class="fa fa-twitter"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/ngp320" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">Recent Posts</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/tech" data-name="科技">科技</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/arts" data-name="人文">人文</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/others" data-name="其他">其他</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text" readonly="readonly" id="local-search-input-tip" placeholder="click to search...">
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+
+
+
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://tanghao.fun/" target="_blank">
+                    <img width="48" src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/husky.png" alt="avatar">
+                </a>
+                <p><span class="label">Author</span>
+                    <a href="https://tanghao.fun/" target="_blank">97年的顽石</a>
+                    <span title="Last edited at&nbsp;2017-10-16">2017-10-16</span>
+                </p>
+                <p>一条咸鱼罢了</p>
+            </div>
+            <h2 class="post-title">编译原理_计算器_Flex、bison实现_（从零开始)</h2>
+			
+			<!--Table of Contents begin-->
+			
+			<!--Table of Contents end -->
+			
+            <div class="post-meta">
+                emm... 9720 words in the article |
+                you are the&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>th friend who reading now
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p><strong>目标</strong>：参考范例程序, 用 Flex 和 Bison 实现一个功能更为强大的计算器，包含以下运算：<br>
+a) 加、减、乘、除运算<br>
+b) 乘方、开方运算<br>
+c) 位运算<br>
+– 与 &amp; 、或 |、非 ~…<br>
+d) 阶乘运算 !<br>
+e)sin cos tan</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sin（SIN*pi/180.0）//把角度变成弧度即把180度变成π</span><br></pre></td></tr></table></figure>
+<p>如果要写实验报告的话，请先看报告书的要求，一边截图一边编程，免得写报告的时候，浪费时间。</p>
+<h2 id="p-s-这篇文章只能助你改程序-并不能让你从零独自编写出程序-附赠安装配置环境的教程-毕竟很多人卡在第一步嘛-▽">P.S. 这篇文章只能助你改程序，并不能让你从零独自编写出程序 附赠安装配置环境的教程（毕竟很多人卡在第一步嘛(￣▽￣)／）</h2>
+<h2 id="一-环境配置：windows-ubuntu-flex-bison">一 环境配置：Windows/Ubuntu+flex、bison</h2>
+<h3 id="1-使用windows-codeblocks-flex-bison的环境-有两种方式">\1 使用Windows+CodeBlocks+flex、bison的环境（有两种方式）</h3>
+<h4 id="方式1-借助codeblcoks编译-运行">方式1 借助codeblcoks编译、运行。</h4>
+<p><a href="https://pan.baidu.com/s/1psFYKwBpaPHhKSoTx6d2_w">flex_bison 下载</a>   百度云密码：usk6<br>
+<a href="https://pan.baidu.com/s/1sQ1VtUIzmGq1zY3EFNeWRQ">flex_bison 备用下载链接</a><br>
+1）下载百度云里的flex和bison。放到windows环境下。<br>
+<strong>2）<strong>把.l文件和.y文件复制到该文件下<br>
+3）在</strong>2）<strong>文件夹的地址栏（也就是下图画红圈的地方），输入</strong>cmd</strong><br>
+<img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2017-10-16-1-19898.png" alt="1"><br>
+4）在cmd里输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flex -ocalc.c calc.l</span><br><span class="line">bison -ocalc.tab.h calc.y  //注意-o后面没有空格</span><br></pre></td></tr></table></figure>
+<p>这样，会生成两个文件，calc.tab.h 和 calc.c<br>
+然后，把生成的.c文件（calc.c），丢进 <strong>codeblocks</strong>里，编译，运行。</p>
+<hr>
+<h4 id="方式2-配置mingw直接在cmd下编译-运行">方式2 配置MinGW直接在cmd下编译、运行。</h4>
+<p><a href="https://pan.baidu.com/s/1psFYKwBpaPHhKSoTx6d2_w">flex_bison 下载</a>   百度云密码：usk6<br>
+<a href="https://pan.baidu.com/s/1sQ1VtUIzmGq1zY3EFNeWRQ">flex_bison 备用下载链接</a><br>
+1）下载百度云里的flex和bison。放到windows环境下。<br>
+<strong>2）<strong>把.l文件和.y文件复制到该文件下<br>
+3）把%codeblocks%\MinGW\bin添加到 电脑\属性\高级系统设置\环境变量\PATH（即把codeblocks的编译器的路径放到环境变量PATH里）<br>
+4）在</strong>2）<strong>文件夹的地址栏（也就是下图画红圈的地方），输入</strong>cmd</strong><br>
+<img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2017-10-16-2-19898.png" alt="2"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">flex  calc.l</span><br><span class="line">bison -o calc.tab.h calc.y  //注意-o后面有没有空格都可以 ==</span><br><span class="line">gcc -o aa lex.yy.c calc.tab.h  //编译</span><br><span class="line">aa		//运行aa.exe</span><br></pre></td></tr></table></figure>
+<p>这种方式，会生成两个文件，calc.tab.h 、calc.tab.c 和 calc.c<br>
+这样，就直接在<strong>cmd</strong>界面，运行程序，而不要通过codeblocks。</p>
+<h3 id="2-使用ubuntu-flex-bison的环境-来编译-运行">\2  使用Ubuntu+flex、bison的环境，来编译、运行。</h3>
+<p><a href="http://blog.csdn.net/qq_35208390/article/details/78271743"> vm12+ubuntukylin16.04 虚拟机安装</a>ヾ(o◕∀◕)ﾉヾ   (❁´︶`❁)<br>
+然后，在ubuntu安装flex、bison并完成编译<br>
+<font color="blue">老版本的ubuntu可能这样安装不了，这种情况，我只能说。。。。。重装一下ubuntu？（逃</font></p>
+<p>ubuntu下打开终端，安装flex、bison：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install flex bison		//安装flex和bison</span><br><span class="line">flex -h</span><br><span class="line">bison -h		//如果有提示信息表示安装成功</span><br></pre></td></tr></table></figure>
+<p>编译和运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd ........./calcSimple		//移动到程序的当前目录</span><br><span class="line">bison -d calc.y</span><br><span class="line">flex calc.l</span><br><span class="line">/*</span><br><span class="line">-lm在提示pow未定义引用时添加。</span><br><span class="line">编译lex.yy.c calc.tab.c 用-o输出到calc</span><br><span class="line">*/</span><br><span class="line">gcc -o calc lex.yy.c calc.tab.c  -lm </span><br><span class="line">./calc		//运行calc</span><br></pre></td></tr></table></figure>
+<hr>
+<p>如果有 <strong>正确的 Makefile文件</strong> 的话，直接输入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo make</span><br><span class="line">./calc</span><br></pre></td></tr></table></figure>
+<p><img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2017-10-16-3-19898.png" alt="3"></p>
+<h2 id="二-一个简单的示例代码calcsimple下载">二 一个简单的示例代码calcSimple下载</h2>
+<p>链接：<a href="http://pan.baidu.com/s/1slc9aPn">http://pan.baidu.com/s/1slc9aPn</a> 密码：uyyi</p>
+<h3 id="calc-l"><strong>calc.l</strong></h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">%option noyywrap</span><br><span class="line"></span><br><span class="line">%&#123;</span><br><span class="line">    /*</span><br><span class="line">     *  一个简单计算器的Lex词法文件</span><br><span class="line">     */</span><br><span class="line">	void yyerror(char*);</span><br><span class="line">	#include &quot;calc.tab.h&quot;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">     /* a-z为变量 */   </span><br><span class="line">[a-z]	&#123;</span><br><span class="line">            yylval = *yytext - &apos;a&apos;;</span><br><span class="line">            return VARIABLE;</span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">    /* 整数 */</span><br><span class="line">[0-9]+	&#123;</span><br><span class="line">            yylval = atoi(yytext);</span><br><span class="line">            return INTEGER;</span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">    /* 运算符 */</span><br><span class="line">[-+()=/*\n]	&#123;return *yytext;&#125;</span><br><span class="line"></span><br><span class="line">    /* 空白被忽略 */</span><br><span class="line">[ \t]    ;</span><br><span class="line"></span><br><span class="line">    /* 其他字符都是非法的 */</span><br><span class="line">.    yyerror(&quot;无效的输入字符&quot;);</span><br><span class="line"></span><br><span class="line">%%</span><br></pre></td></tr></table></figure>
+<hr>
+<p>###<strong>calc.y</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">%token    INTEGER VARIABLE</span><br><span class="line">%left    &apos;+&apos; &apos;-&apos;</span><br><span class="line">%left    &apos;*&apos; &apos;/&apos;</span><br><span class="line"></span><br><span class="line">%&#123;</span><br><span class="line">	</span><br><span class="line">/*for Visual studio */</span><br><span class="line">/*	#define  __STDC__   0   */   </span><br><span class="line"></span><br><span class="line">	#include &lt;stdio.h&gt;   </span><br><span class="line">    void yyerror(char*);</span><br><span class="line">    int yylex(void);</span><br><span class="line">	</span><br><span class="line">    int sym[26];</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line">program:</span><br><span class="line">    program statement &apos;\n&apos;</span><br><span class="line">    |</span><br><span class="line">    ;</span><br><span class="line">statement:</span><br><span class="line">     expr    &#123;printf(&quot;%d\n&quot;, $1);&#125;</span><br><span class="line">     |VARIABLE &apos;=&apos; expr    &#123;sym[$1] = $3;&#125;</span><br><span class="line">     ;</span><br><span class="line">expr:</span><br><span class="line">    INTEGER</span><br><span class="line">    |VARIABLE&#123;$$ = sym[$1];&#125;</span><br><span class="line">    |expr &apos;+&apos; expr    &#123;$$ = $1 + $3;&#125;</span><br><span class="line">    |expr &apos;-&apos; expr    &#123;$$ = $1 - $3;&#125;</span><br><span class="line">    |expr &apos;*&apos; expr    &#123;$$ = $1 * $3;&#125;</span><br><span class="line">    |expr &apos;/&apos; expr    &#123;$$ = $1 / $3;&#125;</span><br><span class="line">    |&apos;(&apos;expr&apos;)&apos;    &#123;$$ = $2;&#125;</span><br><span class="line">    ;</span><br><span class="line">	</span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">void yyerror(char* s)</span><br><span class="line">&#123;</span><br><span class="line">    fprintf(stderr, &quot;%s\n&quot;, s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;A simple calculator.\n&quot;);</span><br><span class="line">    yyparse();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="三-把-calcsimple-修改成-完整版的计算器-全攻略">三 把 calcSimple 修改成 完整版的计算器 全攻略</h2>
+<p><font color="blue">此小节简略说明一下.l文件和.y文件，如果想更多的了解这个程序的意义，请看下文</font><br>
+在calcSimple的基础上，</p>
+<p>在.l文件里添加:（注意中/英文的标点符号不一样）<br>
+/* 运算符 <em>/<br>
+[-+()=/</em><font color="blue">!</font>\n]   {return *yytext;}</p>
+<p>在.y文件里添加文法部分:<br>
+|expr <font color="blue">‘!’</font>      {int i,s=1;for(int i=1;i&lt;=$2;i++)s*=i;$$=s;}<br>
+这里用到了c语言，所以要在.y程序第二部分即%｛｝%里面添加<code>#include&lt;stdio.h&gt;</code></p>
+<p>然后在.y文件开头添加 %right <font color="blue">'!'</font><br>
+这里表示左/右结合性，以及运算符优先级，越是在下面优先级越高</p>
+<p>仿照以下两个程序，把运算符都添加进去，就完成了基本完整的计算器。<br>
+<a href="http://blog.csdn.net/xiaofeige567/article/details/28301877">http://blog.csdn.net/xiaofeige567/article/details/28301877</a><br>
+<a href="http://blog.csdn.net/ly_624/article/details/51125482">http://blog.csdn.net/ly_624/article/details/51125482</a></p>
+<h2 id="四-非常重要的-两个学长学姐的-示例程序">四 非常重要的 两个学长学姐的 示例程序。</h2>
+<p>两个学长学姐，写的很清晰易懂，但不能直接使用，不清楚为什么，仅供参考。==<br>
+两个代码差别挺大的。<br>
+<a href="http://blog.csdn.net/xiaofeige567/article/details/28301877">http://blog.csdn.net/xiaofeige567/article/details/28301877</a><br>
+<a href="http://blog.csdn.net/ly_624/article/details/51125482">http://blog.csdn.net/ly_624/article/details/51125482</a></p>
+<h2 id="五-理解-l-文件和-y-文件">五 理解 <code>.l</code> 文件和 <code>.y</code> 文件</h2>
+<h3 id="1-查阅龙书-编译原理-中文第二版-p86和p170">\1 查阅龙书（编译原理）中文第二版(P86和P170 )</h3>
+<p><img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2017-10-16-4-19898.png" alt="4"><br>
+(lex和yacc是Unix的软件，而flex和bison是其在ubantu（linux下）的兼容版本)<br>
+P86   详细解释了flex（lex）软件的 代码。也就是calc.l文件的详细解释<br>
+P170 详细解释了bison（yacc）软件的 代码。也就是calc.y文件的详细解释</p>
+<h3 id="2-老师课件-上的解释">\2 老师课件 上的解释</h3>
+<p>链接: <a href="http://pan.baidu.com/s/1o8FV43C">老师课件</a><br>
+<code>2-词法分析-RE-Lex.pptx</code><br>
+<code>YACC.pptx</code>	<br>
+<code>实验-补充-LEX.pdf</code></p>
+<hr>
+<h2 id="六-词法分析-语法分析">六 词法分析&amp;语法分析</h2>
+<h4 id="1-词法分析">\1 词法分析</h4>
+<p>首先来看flex的使用：<br>
+简单来说分为两步：<br>
+1 先定义一个flex的输入文件，描述词法。<br>
+2 用flex程序处理这个文件，生成对应的C语言源代码文件。<br>
+（一般flex的输入文件以.l文件结尾， 比如这个文件calc.l）</p>
+<p>文件分成三个部分</p>
+<pre><code>第一部分是从 %{ 到 }% 标记的部分。 
+这个部分会原封不动的复制到flex的生成代码中。
+文件开头定义了一个YYSTYPE宏。
+每个TOKEN可以有一个lval值属性，
+YYSTYPE定义类型就是token的lval的类型。
+_EasyTData是我们的web服务层和web页面层公用的通用数据结构。
+然后就是一些要include的头文件，第一部分就完了。
+
+lex的输入文件的第二部分，是从 % } 到 % % 之间的部分，
+这部分用正则表达式定义了一些数据类型。
+ 比如int num string ignore_char identifier等。 
+注意这里使用的正则表达式的形式是ERE而不是BRE。 
+ERE与BRE比较明显的区别就是，
+ERE使用+表示字符重复一次以上，*表示字符重复0次以上。
+BRE使用{1,}这种方式表示字符重a
+
+文件的第三部分，是% % 到% % 的部分。
+这里定义了词法分析器在解析的处理动作。
+yytext是一个flex内部的标识符，表示匹配到的字符串。
+上文介绍了，lval也是一个内部标识符，表示TOKEN的值。
+json2tdata_是标识符的前缀, 在执行flex的时候，用-P指定。
+
+flex输入文件写完之后，使用下面这条命令，
+就可以把flex的输入文件转换为C语言的源代码了。
+flex calc.l//生成lex.yy.c
+</code></pre>
+<hr>
+<h4 id="2-语法分析">\2 语法分析</h4>
+<p>语法分析是使用bison工具。<br>
+使用bison工具也是分为两步，<br>
+第一步写bison的输入文件，第二步用bison程序生成C语言源码。<br>
+（bison的输入文件一般用.y作为后缀名。）</p>
+<p>和flex的词法分析输入文件类似，bison的输入文件也是分成3部分。</p>
+<pre><code>第一部分% {和% }之间，是原封不动拷贝到输出的C语言源文件中的。 
+json2tdata_lex这个函数是flex生成的。 
+json2tdata_error是用来处理错误信息的函数。
+通过定义和实现这个函数你可以把错误信息写到任何地方。
+与flex类似，json2tdata也是自定义的前缀。
+
+第二部分是%token INT NUM STRING R_BRACKET COLON 
+SEMICOLON COMMA IDENTIFIER TRUE FALSE NIL这一行，
+这一行的作用就是声明在flex中定义的那些TOKEN。
+
+第三部分是% % % %包围的部分。
+这部分就是语法的推导过程。  
+可以比较轻松的看出，这部分主要就是采用BNF对语法进行描述。
+比如Array， 它有两种形式。
+第一种是 L_BRACKET ELEMENTS R_BRACKET,
+第二种则是L_BRACKET R_BRACKET， 
+这表示一个空的Array。
+Bison能够完全支持LR(1)文法。 
+这种文法的特点是只要多向前看一个TOKEN，
+就能够决定如何解析。
+因此如果bison告诉你语法ambiguous的时候，
+可以想一想如何把自己的文法改成LR(1)型文法。
+另外，每一条规则的后面可以用{}来定义解析的动作
+bison用$$表示规则左边的对象，
+用$1 $2 $3 等依次表示规则右边的对象。
+</code></pre>
+<h2 id="七-编译-运行的时候-常见错误以及对策">七 编译、运行的时候，常见错误以及对策</h2>
+<h3 id="1-shift-reduce-conflict">1）  …shift/reduce conflict…</h3>
+<pre><code>最常见的情况是：在.l 和.y文件中没有添加相应 符号，或者没有写优先级
+</code></pre>
+<h3 id="2-在原来的只能用整数的示例程序里添加-小数-的功能">2）  在原来的只能用整数的示例程序里添加 <strong>小数</strong> 的功能</h3>
+<pre><code>  在 .l 和 .y 文件里添加 	#define YYSTYPE double
+
+  在.l文件里 atoi（yytext）改为 atof（yytext）
+
+//一般会有错误提示，按照错误提示一个个改就好了。
+  为所有用到整数型的地方，添加强制类型转换 (int) 
+</code></pre>
+<h3 id="3-pow的未定义引用">3）  pow的未定义引用</h3>
+<pre><code>两种可能
+	  .y文件里没有添加math.h头文件
+	  gcc -o calc lex.yy.c calc.tab.c -lm //没有添加-lm
+</code></pre>
+<p>转自：<br>
+<a href="http://blog.csdn.net/li740207611/article/details/51072111">http://blog.csdn.net/li740207611/article/details/51072111</a></p>
+<pre><code>原因：Linux下用math.h库的pow()函数，
+gcc编译的时候报错返回：对‘pow’未定义的引用 
+查了下资料，需要在gcc编译的时候加上-lm参数才能正常编译。 
+这是为什么呢？再查了下资料： 
+使用math.h中声明的库函数还有一点特殊之处，
+gcc命令行必须加-lm选项，因为数学函数位于libm.so库文件中
+（这些库文件通常位于/lib目录下），-lm选项告诉编译器，
+我们程序中用到的数学函数要到这个库文件里找。
+本书用到的大部分库函数（例如printf）位于libc.so库文件中，
+使用libc.so中的库函数在编译时不需要加-lc选项，
+当然加了也不算错，因为这个选项是gcc的默认选项。
+</code></pre>
+<p>以上，如有疏漏，敬请指正。</p>
+<h2 id="八-源代码">八 源代码</h2>
+<p>a.l	文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">    /*</span><br><span class="line">     *  一个简单计算器的Lex词法文件</span><br><span class="line">     */</span><br><span class="line">	int yywrap();</span><br><span class="line">    #define YYSTYPE double</span><br><span class="line">	void yyerror(char*);</span><br><span class="line">	#include &quot;a.tab.h&quot;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">     /* a-z为变量 */   </span><br><span class="line">[a-z]	&#123;</span><br><span class="line">            yylval = *yytext - &apos;a&apos;;</span><br><span class="line">            return VARIABLE;</span><br><span class="line">    	&#125;</span><br><span class="line">    /*16进制数*/</span><br><span class="line">0x\.?[a-f0-9]+|0x[a-f0-9]+\.[a-f0-9]* &#123;</span><br><span class="line">	        yylval=atof(yytext);</span><br><span class="line">		    return HEXADECIMAL;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    /* 整数或者小数 */</span><br><span class="line">\.?[0-9]+|[0-9]+\.[0-9]*	&#123;</span><br><span class="line">            yylval = atof(yytext);</span><br><span class="line">            return INTEGER;</span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">    /* 运算符 */</span><br><span class="line">[-+()=/*&amp;|~!^@\n]	&#123;return *yytext;&#125;</span><br><span class="line"></span><br><span class="line">    /* 三角函数 */</span><br><span class="line">sin &#123;</span><br><span class="line">	return SIN;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">cos &#123;</span><br><span class="line">	return COS;</span><br><span class="line">    &#125;</span><br><span class="line">tan &#123;</span><br><span class="line">	return TAN;</span><br><span class="line">    &#125;</span><br><span class="line">    /* 空白被忽略 */</span><br><span class="line">[ \t]    ;</span><br><span class="line"></span><br><span class="line">    /* 其他字符都是非法的 */</span><br><span class="line">.    yyerror(&quot;无效的输入字符&quot;);</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line">int yywrap()</span><br><span class="line">&#123;return 1;&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>a.y	文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">%token   HEXADECIMAL INTEGER VARIABLE SIN COS TAN</span><br><span class="line">%left    &apos;+&apos; &apos;-&apos;</span><br><span class="line">%left    &apos;*&apos; &apos;/&apos;</span><br><span class="line">%left    &apos;&amp;&apos;</span><br><span class="line">%left    &apos;|&apos;</span><br><span class="line">%left    &apos;^&apos;</span><br><span class="line">%right   &apos;@&apos;&apos;~&apos;</span><br><span class="line">%left    &apos;!&apos;</span><br><span class="line"></span><br><span class="line">%&#123;</span><br><span class="line">	</span><br><span class="line">/*for Visual studio */</span><br><span class="line">/*	#define  __STDC__   0   */   </span><br><span class="line"></span><br><span class="line">	#include &lt;stdio.h&gt;   </span><br><span class="line">    #include &lt;math.h&gt;</span><br><span class="line">    #define YYSTYPE double</span><br><span class="line">    #define pi 3.1415926 </span><br><span class="line">	void yyerror(char*);</span><br><span class="line">    int yylex(void);</span><br><span class="line">	</span><br><span class="line">    double sym[26];</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line">program:</span><br><span class="line">    program statement &apos;\n&apos;</span><br><span class="line">    |</span><br><span class="line">    ;</span><br><span class="line">statement:</span><br><span class="line">     expr    &#123;printf(&quot;%lf\n&quot;, $1);&#125;</span><br><span class="line">     |VARIABLE &apos;=&apos; expr    &#123;sym[(int)$1] = $3;&#125;</span><br><span class="line">     ;</span><br><span class="line">expr:</span><br><span class="line">    INTEGER</span><br><span class="line">	|HEXADECIMAL</span><br><span class="line">    |VARIABLE&#123;$$ = sym[(int)$1];&#125;</span><br><span class="line">    |expr &apos;+&apos; expr    &#123;$$ = $1 + $3;&#125;</span><br><span class="line">    |expr &apos;-&apos; expr    &#123;$$ = $1 - $3;&#125;</span><br><span class="line">    |expr &apos;*&apos; expr    &#123;$$ = $1 * $3;&#125;</span><br><span class="line">    |expr &apos;/&apos; expr    &#123;$$ = $1 / $3;&#125;</span><br><span class="line">    |expr &apos;&amp;&apos; expr    &#123;$$ = (int)$1 &amp; (int)$3;&#125;</span><br><span class="line">    |expr &apos;|&apos; expr    &#123;$$ = (int)$1 | (int)$3;&#125;</span><br><span class="line">    |&apos;~&apos; expr         &#123;$$ = ~(int)$2;&#125;</span><br><span class="line">    |&apos;@&apos; expr         &#123;$$ = sqrt($2);&#125;</span><br><span class="line">    |expr &apos;@&apos; expr    &#123;$$ = $1*sqrt($3);&#125;</span><br><span class="line">    |expr &apos;!&apos;         &#123;int i=1,s=1;for(;i&lt;=$2;i++)s*=i;$$=s;&#125;</span><br><span class="line">    |expr &apos;^&apos; expr    &#123;$$=pow($1,$3);&#125;</span><br><span class="line">    |&apos;(&apos;expr&apos;)&apos;       &#123;$$ = $2;&#125;</span><br><span class="line">    |SIN&apos;(&apos;expr&apos;)&apos;       &#123;$$ = sin($3*pi/180.0);&#125;</span><br><span class="line">    |COS&apos;(&apos;expr&apos;)&apos;       &#123;$$ = cos($3*pi/180.0);&#125;</span><br><span class="line">    |TAN&apos;(&apos;expr&apos;)&apos;       &#123;$$ = tan($3*pi/180.0);&#125;</span><br><span class="line">    ;</span><br><span class="line">	</span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">void yyerror(char* s)</span><br><span class="line">&#123;</span><br><span class="line">    fprintf(stderr, &quot;%s\n&quot;, s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;A simple calculator.\n可以用的运算符：+-*/&amp;|~!^@ \n要注意的是三角函数使用时要加括号。 例：sin(60)\n&quot;);</span><br><span class="line">    yyparse();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Makefile	文件（只在linux下可用，注意文件名得是Makefile，大小写敏感）</p>
+<ul>
+<li>Makefile 文件最基础教程：<br>
+<a href="https://blog.csdn.net/qq_35208390/article/details/78488099">https://blog.csdn.net/qq_35208390/article/details/78488099</a></li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">all: prog clean</span></span><br><span class="line"></span><br><span class="line"><span class="section">prog:	1a.l 1a.y</span></span><br><span class="line">	flex 1a.l</span><br><span class="line">	bison -d 1a.y</span><br><span class="line">	gcc -o a lex.yy.c 1a.tab.c -lm</span><br><span class="line"></span><br><span class="line"><span class="section">clean:	</span></span><br><span class="line">	rm lex.yy.c 1a.tab.c 1a.tab.h</span><br></pre></td></tr></table></figure>
+<p>emmm…补充一下 =。= 用记事本写的 xxx.l 和xxx.y文件， flex.exe和bison.exe 只是在运行的时候使用.</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> Donate
+            </a>
+        </div>
+        
+        <div class="post-tags">Tags：
+            
+            <a href="/tags/编译原理/">编译原理</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">This article just represents my own viewpoint. If there is something wrong, please correct me.</p>
+    
+    
+
+    
+    
+        
+        
+        
+        
+        
+        <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"> </script>
+        <div id="gitalk-container"></div>
+        <script type="text/javascript">
+            var gitalk = new Gitalk({
+                clientID: 'fa61ee47d3bb3963923d',
+                clientSecret: '815c537bdd810b517fd3713374c49f49477d37b6',
+                id: window.location.pathname,
+                repo: 'gitalk-comment',
+                owner: 'ngp320',
+                admin: 'ngp320',
+                distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        </script>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about" title="About">About</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="Help">Help</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="Links">Links</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="SiteMap">SiteMap</a>
+        </p>
+        <p>
+            Has been established&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbspDays，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">Based on Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a><br>
+            ©2017-<span id="cpYear"></span> Based on&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，Theme by&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，Author&nbsp<a href="https://tanghao.fun/" target="_blank" rel="friend">97年的顽石</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/clipboard-use.js"></script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f41d202b2d4f8f5e6ec6372d0e49a243";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input" spellcheck="false" type="text" autocomplete="off" placeholder="Input query keywords here...">
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        var jsi_config = {
+            buildingTime: '03/26/2019',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: { dbPath: '' },
+            readMode: 'day'
+        };
+        
+            jsi_config.localSearch = {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        
+        SimpleCore.init(jsi_config);
+        
+    });
+    var host = "https://tanghao-fun-1.disqus.com/";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+</script>
+</body>
+</html>

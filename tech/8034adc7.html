@@ -1,0 +1,530 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://tanghao.fun/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://tanghao.fun">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://tanghao.fun">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+
+<link rel="prerender" href="http://tanghao.fun">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://tanghao.fun">
+<meta name="author" content="97年的顽石">
+
+<link rel="stylesheet" href="/css/JSimple.css">
+<link rel="stylesheet" href="/css/gitalk_without_markdown_style.css">
+
+<link rel="shortcut icon" href="/images/husky.png">
+
+
+<title>maven-常用命令-镜像 - 石灰粉</title>
+
+<meta name="keywords" content="maven镜像,maven 镜像,maven常用命令,maven 常用命令,maven加速,maven 加速">
+
+<meta name="description " content="暂无概述">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                processEscapes: true
+            }
+        });
+    </script>
+
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #00ffff; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #ff00bf, 0 0 10px #ff00bf; 
+    }
+    .pace .pace-activity {
+        border-top-color: gray;     
+        border-left-color: gray;    
+    }
+</style>
+<meta name="baidu-site-verification" content="EEIBPMlFvg">
+<meta name="google-site-verification" content="N3Fal_bR6YET3abXuRx_xPNBWUVA0d6D3x17MGZStSs">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-137195466-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-137195466-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="永">永</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="/archives" title="Archives"><i class="fa fa-archives"></i><span>Archives</span></a>
+        <a href="/tags" title="Tags"><i class="fa fa-tags"></i><span>Tags</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">NGP</h1>
+        <h3 class="cover-siteTitle">Is life always this hard or is it just when you&#39;re a kid</h3>
+        <p class="cover-siteDesc">当你老了，回顾一生，就会发觉：什么时候出国读书，什么时候决定做第一份职业、何时选定了对象而恋爱、什么时候结婚，其实都是命运的巨变。只是当时站在三岔路口，眼见风云千樯，你作出选择的那一日，在日记上，相当沉闷和平凡，当时还以为是生命中普通的一天。</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-instagram">
+        <a href target="_blank" title="instagram" ref="friend">
+            <i class="fa fa-instagram"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-twitter">
+        <a href target="_blank" title="twitter" ref="friend">
+            <i class="fa fa-twitter"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/ngp320" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">Recent Posts</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/tech" data-name="科技">科技</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/arts" data-name="人文">人文</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/others" data-name="其他">其他</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text" readonly="readonly" id="local-search-input-tip" placeholder="click to search...">
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+
+
+
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://tanghao.fun/" target="_blank">
+                    <img width="48" src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/husky.png" alt="avatar">
+                </a>
+                <p><span class="label">Author</span>
+                    <a href="https://tanghao.fun/" target="_blank">97年的顽石</a>
+                    <span title="Last edited at&nbsp;2019-04-17">2019-04-17</span>
+                </p>
+                <p>一条咸鱼罢了</p>
+            </div>
+            <h2 class="post-title">Maven-常用命令-镜像</h2>
+			
+			<!--Table of Contents begin-->
+			
+			<!--Table of Contents end -->
+			
+            <div class="post-meta">
+                emm... 6740 words in the article |
+                you are the&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>th friend who reading now
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>[TOC]</p>
+<h4 id="1-常用maven命令">1.常用maven命令</h4>
+<p>①注意: 执行与构建过程相关的Maven命令，必须进入pom.xml所在的目录。</p>
+<p>与构建过程相关: 编译、测试、打包、…</p>
+<p>②常用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mvn clean              //清理</span><br><span class="line">mvn compile            //编译主程序</span><br><span class="line">mvn test-compole       //编译测试程序</span><br><span class="line">mvn test               //执行测试</span><br><span class="line">mvn package            //打包</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn install     //自己开发的Maven工程，用install安装进仓库</span><br><span class="line">mvn site        //生成站点</span><br></pre></td></tr></table></figure>
+<h4 id="2-关于联网问题">2.关于联网问题</h4>
+<p>①Maven的核心程序中仅仅定义了抽象的生命周期，但是具体的工作必须由特定的插件来完成。而插件本身并不包含在Maven的核心程序中。</p>
+<p>②当我们执行的Maven命令需要用到某些插件时，Maven核心程序会首先到本地仓库中查找。</p>
+<p>③本地仓库的默认位置: [系统中当前用户的家目录]\.m2\repository</p>
+<p><code>C:\Users\[系统中当前用户的家目录]\.m2\repository</code></p>
+<p>④Maven核心程序如果在本地仓库中找不到需要的插件，那么它会自动连接外网，到中央仓库下载。(可设置aliyun镜像加速)</p>
+<p>在 maven-3.X…/conf/setting.xml中的<code>&lt;mirrors&gt;&lt;/mirrors&gt;</code>中，添加以下代码:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">id</span>&gt;</span>central<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">name</span>&gt;</span>Maven Repository Switchboard<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://repo1.maven.org/maven2/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">name</span>&gt;</span>Human Readable Name for this Mirror.<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://repo2.maven.org/maven2/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">id</span>&gt;</span>ibiblio<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">name</span>&gt;</span>Human Readable Name for this Mirror.<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://mirrors.ibiblio.org/pub/mirrors/maven2/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">id</span>&gt;</span>jboss-public-repository-group<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">name</span>&gt;</span>JBoss Public Repository Group<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://repository.jboss.org/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- 中央仓库在中国的镜像 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">id</span>&gt;</span>maven.net.cn<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">name</span>&gt;</span>oneof the central mirrors in china<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.net.cn/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>⑤如果此时无法连接外网，则构建失败</p>
+<p>⑥修改迷人本地仓库的位置可以让Maven核心程序到我们事先准备好的目录下查找插件</p>
+<blockquote>
+<p>[1]找到Maven解压目录\conf\setting.xml</p>
+<p>[2]在setting.xml文件中找到<code>LocalRepository标签</code></p>
+<p>[3]将<code>&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;</code>从注释中取出</p>
+<p>[4]将标签体内容修改为已经准备好的Maven仓库目录</p>
+<p><code>&lt;localRepository&gt;D:\DevInstall\RepMaven&lt;/localRepository&gt;</code></p>
+</blockquote>
+<h4 id="3-pom">3.POM</h4>
+<p>①含义: Project Object Model 项目对象模型</p>
+<blockquote>
+<p>DOM Document Object Model 文档对象模型</p>
+</blockquote>
+<p>②pom.xml对于Maven工程是核心配置文件，与构建过程相关的一切设置都是在这个文件中进行配置。</p>
+<blockquote>
+<p>重要程度相当于web.xml对于动态Web工程</p>
+</blockquote>
+<h4 id="4-坐标">4.坐标</h4>
+<p>①数学中的坐标:</p>
+<blockquote>
+<p>[1]在平面上，使用X、Y两个向量可以唯一的定位平面中的任何一个点</p>
+<p>[2]在空间中，使用X、Y、Z三个向量可以唯一的定位空间中的任何一个点’</p>
+</blockquote>
+<p>②Maven的坐标(GAV):</p>
+<blockquote>
+<p>使用下面三个向量在仓库中唯一定位一个Maven工程</p>
+<p>[1]groupid: 公司或组织域名倒序+项目名</p>
+<p><code>&lt;groupId&gt;com.ngp.maven&lt;/groupId&gt;</code></p>
+<p>[2]artifactid: 模块名</p>
+<p><code>&lt;artifactId&gt;Hello&lt;/artifactId&gt;</code></p>
+<p>[3]version: 版本</p>
+<p><code>&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</code></p>
+</blockquote>
+<p>③Maven工程的坐标与仓库中路径的对应关系</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">org/springframework/spring-core/4.0.0.RELEASE/spring-core-4.0.0.RELEASE.jar</span><br></pre></td></tr></table></figure>
+<h4 id="5-仓库">5.仓库</h4>
+<p>①仓库的分类</p>
+<blockquote>
+<p>[1]本地仓库: 当前电脑行部署的仓库目录，为当前电脑上所有的Maven工程服务</p>
+<p>[2]远程仓库:</p>
+<blockquote>
+<p>(1)私服: 搭建在局域网环境中，为局域网范围内的所有Maven工程服务</p>
+<p>(2)中央仓库: 假设在Internet上，为全世界所有Maven工程服务</p>
+<p>(3)中央仓库镜像: 为了分担中央仓库的流量，提升用户访问速度</p>
+</blockquote>
+</blockquote>
+<p>②仓库中的保存的内容: Maven工程</p>
+<blockquote>
+<p>[1]Maven自身所需要的插件</p>
+<p>[2]第三方框架或工具的jar包</p>
+<p>[3]我们自己开发的Maven工程</p>
+</blockquote>
+<h4 id="6-依赖-初步">6.依赖[初步]</h4>
+<p>①Maven解析依赖信息时会到本地仓库中查找被依赖的jar包。</p>
+<blockquote>
+<p>对于我们自己开发的Maven工程，使用install命令安装后就可以进入仓库。</p>
+</blockquote>
+<p>②依赖的范围</p>
+<blockquote>
+<p>[1]compile范围依赖</p>
+<ul>
+<li>对主程序是否有效:   有效</li>
+<li>对测试程序是否有效: 有效</li>
+<li>是否参与打包:       参与</li>
+<li>是否参与部署:       参与</li>
+<li>典型例子:    spring-core</li>
+</ul>
+<p>[2]test范围依赖</p>
+<ul>
+<li>对主程序是否有效:   无效</li>
+<li>对测试程序是否有效: 有效</li>
+<li>是否参与打包:       不参与</li>
+<li>是否参与部署:       不参与</li>
+<li>典型例子: junit</li>
+</ul>
+<p>[3]provided范围依赖(通常在web里面)</p>
+<ul>
+<li>对主程序是否有效:   有效</li>
+<li>对测试程序是否有效: 有效</li>
+<li>是否参与打包:       不参与</li>
+<li>是否参与部署:       不参与</li>
+<li>典型例子: servelet-api.jar</li>
+</ul>
+</blockquote>
+<p><img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2019-04-17-1-321.png" alt="1"></p>
+<p><img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2019-04-17-2-321.png" alt="2"></p>
+<p><img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2019-04-17-3-321.png" alt="3"></p>
+<p>— 26节 ----</p>
+<h4 id="7-依赖-高级">7.依赖[高级]</h4>
+<p>①依赖的传递性</p>
+<blockquote>
+<p><img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2019-04-17-4-321.png" alt="4"></p>
+<p>[1]好处: 可以传递的依赖不必在每个模块工程中都重复声明，在 “最下面” 的工程中依赖一次即可。</p>
+<p>[2]注意: 非compiled范围的依赖不能传递。(在这指的就是test、provided)所以在各个工程模块中，如果有需要就得重复声明依赖。</p>
+</blockquote>
+<p>②依赖的排除</p>
+<blockquote>
+<p>[1]需要设置依赖排除的场合</p>
+<p><img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2019-04-17-5-321.png" alt="5"></p>
+<p>[2]依赖排除的设置方式</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">&gt;     <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">&gt;         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-logging<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">&gt;         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">&gt;     <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>③依赖的原则</p>
+<blockquote>
+<p>[1]作用: 解决模块工程质检的jar包冲突问题</p>
+<p>[2]情景设定1: 验证路径最短者优先原则</p>
+<p><img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2019-04-17-6-321.png" alt="6"></p>
+<p>[3]情景设定2: 验证路径相同时先声明者优先</p>
+<p><img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2019-04-17-7-321.png" alt="7"></p>
+<p>先声明指的是dependency标签的声明顺序</p>
+</blockquote>
+<p>④统一管理依赖版本</p>
+<blockquote>
+<p>[1]情景举例</p>
+<p><img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2019-04-17-8-321.png" alt="8"></p>
+<p>这里对Spring各个jar包的依赖版本都是4.0.0</p>
+<p>如果需要同一升级为4.1.1，怎么办? 手动逐一修改不可靠。</p>
+<p>[2]建议配置方式</p>
+<blockquote>
+<p>i. 使用properties标签内使用自定义标签统一声明版本号</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt; <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">&gt; &gt; 	<span class="tag">&lt;<span class="name">ngp.spring.version</span>&gt;</span>4.0.0.RELEASE<span class="tag">&lt;/<span class="name">ngp.spring.version</span>&gt;</span></span><br><span class="line">&gt; &gt; <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">&gt; &gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>ii.在需要同一版本的位置，使用${自定义标签名}引用声明的版本号</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt; <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;ngp.spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">&gt; &gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>[3]其实properties标签配合自定义标签声明数据的配置并不是只能用于声明依赖的版本号。(还可以配置UTF-8等)凡事需要统一声明后在引用的场合都可以使用。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">&gt; 	<span class="tag">&lt;<span class="name">ngp.spring.version</span>&gt;</span>4.0.0.RELEASE<span class="tag">&lt;/<span class="name">ngp.spring.version</span>&gt;</span></span><br><span class="line">&gt;     <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote></blockquote>
+<h4 id="8-继承">8.继承</h4>
+<p>①现状</p>
+<blockquote>
+<p>Hello依赖的junit: 4.0</p>
+<p>HelloFriend依赖的junit: 4.0</p>
+<p>MakeFriends依赖的junit: 4.9</p>
+<p>由于test范围的依赖不能传递，所以必然会分散在各个模块工程中，很容易造成版本不一致</p>
+</blockquote>
+<p>②需求: 同一管理各个模块工程中对junit依赖的版本</p>
+<p>③解决思路: 将junit依赖统一提取到 “父” 工程中，在子工程中声明junit依赖时不指定版本，以父工程中同一设定的为准。同时也便于修改。</p>
+<p>④操作步骤</p>
+<blockquote>
+<p>[1]创建一个Maven工程作为父工程。注意: 打包的方式pom</p>
+<p>[2]在子工程中声明对父工程的引用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">&lt;!-- 子工程中声明对父工程的引用 --&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">&gt; 	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.ngp.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">&gt;     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">&gt;     <span class="tag">&lt;<span class="name">verison</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">verison</span>&gt;</span></span><br><span class="line">&gt;     </span><br><span class="line">&gt;     <span class="comment">&lt;!-- 以当前文件为基准的父工程pom.xml文件的相对路劲 --&gt;</span></span><br><span class="line">&gt;     <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../Parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>[3]将子工程的坐标中与父工程左边中重复的内容删除</p>
+<p><img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2019-04-17-9-321.png" alt="9"></p>
+<p>[4]在父工程中统一junit的依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">&gt;     <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">&gt;         <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">&gt;             <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">&gt;             <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">&gt;             <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">&gt;             <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">&gt;         <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">&gt;     <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">&gt; <span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>[5]在子工程中删除junit依赖的版本号部分</p>
+<p><img src="https://ngp8264-pic.oss-cn-hongkong.aliyuncs.com/images/2019-04-17-10-321.png" alt="10"></p>
+</blockquote>
+<p>⑤注意: 配置继承后，执行安装命令时要先安装父工程。</p>
+<h4 id="9-聚合">9.聚合</h4>
+<p>①作用: 一键安装各个模块工程</p>
+<p>②配置方式: 在一个 “总的聚合工程” 中配置各个参与聚合的模块</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置聚合 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 指定各个子工程的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>../Hello<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">module</span>&gt;</span>../HelloFriend<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span>&gt;</span>../MakeFriends<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>③使用方式: 在聚合工程的pom.xml上点右键 → run as → maven install</p>
+<p>从26节起，运行index.jsp的时候就运行不下去了、、没有 choose a … apache6.0的选项。。。之后的都是纯笔记，没有实操</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> Donate
+            </a>
+        </div>
+        
+        <div class="post-tags">Tags：
+            
+            <a href="/tags/maven/">maven</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">This article just represents my own viewpoint. If there is something wrong, please correct me.</p>
+    
+    
+
+    
+    
+        
+        
+        
+        
+        
+        <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"> </script>
+        <div id="gitalk-container"></div>
+        <script type="text/javascript">
+            var gitalk = new Gitalk({
+                clientID: 'fa61ee47d3bb3963923d',
+                clientSecret: '815c537bdd810b517fd3713374c49f49477d37b6',
+                id: window.location.pathname,
+                repo: 'gitalk-comment',
+                owner: 'ngp320',
+                admin: 'ngp320',
+                distractionFreeMode: 'true'
+            })
+            gitalk.render('gitalk-container')
+        </script>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about" title="About">About</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="Help">Help</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="Links">Links</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="SiteMap">SiteMap</a>
+        </p>
+        <p>
+            Has been established&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbspDays，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">Based on Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a><br>
+            ©2017-<span id="cpYear"></span> Based on&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，Theme by&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，Author&nbsp<a href="https://tanghao.fun/" target="_blank" rel="friend">97年的顽石</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/clipboard-use.js"></script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f41d202b2d4f8f5e6ec6372d0e49a243";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input" spellcheck="false" type="text" autocomplete="off" placeholder="Input query keywords here...">
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        var jsi_config = {
+            buildingTime: '03/26/2019',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: { dbPath: '' },
+            readMode: 'day'
+        };
+        
+            jsi_config.localSearch = {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        
+        SimpleCore.init(jsi_config);
+        
+    });
+    var host = "https://tanghao-fun-1.disqus.com/";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+</script>
+</body>
+</html>
